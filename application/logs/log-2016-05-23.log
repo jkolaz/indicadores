@@ -1,0 +1,22 @@
+ERROR - 2016-05-23 12:39:41 --> Severity: Notice  --> Undefined index: modulo C:\xampp\htdocs\gestor\application\views\templates_c\8988cffea4779336ddd78356dd8be8ccdc2eef86_0.file.administrador_nuevo.tpl.php 35
+ERROR - 2016-05-23 12:39:41 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\8988cffea4779336ddd78356dd8be8ccdc2eef86_0.file.administrador_nuevo.tpl.php 35
+ERROR - 2016-05-23 12:39:41 --> Severity: Notice  --> Undefined index: modulo C:\xampp\htdocs\gestor\application\views\templates_c\8988cffea4779336ddd78356dd8be8ccdc2eef86_0.file.administrador_nuevo.tpl.php 38
+ERROR - 2016-05-23 12:39:41 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\8988cffea4779336ddd78356dd8be8ccdc2eef86_0.file.administrador_nuevo.tpl.php 38
+ERROR - 2016-05-23 12:46:52 --> Severity: Notice  --> Undefined index: modulo C:\xampp\htdocs\gestor\application\views\templates_c\8988cffea4779336ddd78356dd8be8ccdc2eef86_0.file.administrador_nuevo.tpl.php 36
+ERROR - 2016-05-23 12:46:52 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\8988cffea4779336ddd78356dd8be8ccdc2eef86_0.file.administrador_nuevo.tpl.php 36
+ERROR - 2016-05-23 12:46:52 --> Severity: Notice  --> Undefined index: modulo C:\xampp\htdocs\gestor\application\views\templates_c\8988cffea4779336ddd78356dd8be8ccdc2eef86_0.file.administrador_nuevo.tpl.php 39
+ERROR - 2016-05-23 12:46:52 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\8988cffea4779336ddd78356dd8be8ccdc2eef86_0.file.administrador_nuevo.tpl.php 39
+ERROR - 2016-05-23 15:19:59 --> Severity: Notice  --> Undefined property: stdClass::$icon_estado C:\xampp\htdocs\gestor\application\views\templates_c\d6645fb171d7bc69e7df156000fd83da29372dec_0.file.administrador_index.tpl.php 131
+ERROR - 2016-05-23 15:19:59 --> Severity: Notice  --> Undefined property: stdClass::$icon_estado C:\xampp\htdocs\gestor\application\views\templates_c\d6645fb171d7bc69e7df156000fd83da29372dec_0.file.administrador_index.tpl.php 134
+ERROR - 2016-05-23 15:19:59 --> Severity: Notice  --> Undefined property: stdClass::$icon_estado C:\xampp\htdocs\gestor\application\views\templates_c\d6645fb171d7bc69e7df156000fd83da29372dec_0.file.administrador_index.tpl.php 131
+ERROR - 2016-05-23 15:19:59 --> Severity: Notice  --> Undefined property: stdClass::$icon_estado C:\xampp\htdocs\gestor\application\views\templates_c\d6645fb171d7bc69e7df156000fd83da29372dec_0.file.administrador_index.tpl.php 134
+ERROR - 2016-05-23 15:19:59 --> Severity: Notice  --> Undefined property: stdClass::$icon_estado C:\xampp\htdocs\gestor\application\views\templates_c\d6645fb171d7bc69e7df156000fd83da29372dec_0.file.administrador_index.tpl.php 131
+ERROR - 2016-05-23 15:19:59 --> Severity: Notice  --> Undefined property: stdClass::$icon_estado C:\xampp\htdocs\gestor\application\views\templates_c\d6645fb171d7bc69e7df156000fd83da29372dec_0.file.administrador_index.tpl.php 134
+ERROR - 2016-05-23 15:19:59 --> Severity: Notice  --> Undefined property: stdClass::$icon_estado C:\xampp\htdocs\gestor\application\views\templates_c\d6645fb171d7bc69e7df156000fd83da29372dec_0.file.administrador_index.tpl.php 131
+ERROR - 2016-05-23 15:19:59 --> Severity: Notice  --> Undefined property: stdClass::$icon_estado C:\xampp\htdocs\gestor\application\views\templates_c\d6645fb171d7bc69e7df156000fd83da29372dec_0.file.administrador_index.tpl.php 134
+ERROR - 2016-05-23 15:23:11 --> Query error: Unknown column 'ta_id' in 'where clause'
+ERROR - 2016-05-23 15:24:10 --> Severity: Notice  --> Undefined property: stdClass::$ta_id C:\xampp\htdocs\gestor\application\models\seguridad\administrador_model.php 104
+ERROR - 2016-05-23 15:26:04 --> Severity: Notice  --> Undefined property: Administrador::$ta_id C:\xampp\htdocs\gestor\system\core\Model.php 52
+ERROR - 2016-05-23 15:26:39 --> Severity: Notice  --> Undefined property: Administrador::$ta_id C:\xampp\htdocs\gestor\system\core\Model.php 52
+ERROR - 2016-05-23 15:27:17 --> Severity: Notice  --> Undefined property: Administrador::$ta_id C:\xampp\htdocs\gestor\system\core\Model.php 52
+ERROR - 2016-05-23 15:34:29 --> Query error: Unknown column 'adm_nombres' in 'field list'

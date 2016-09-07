@@ -1,0 +1,15 @@
+ERROR - 2016-05-19 14:38:54 --> Severity: Notice  --> Undefined property: Sede::$sed C:\xampp\htdocs\gestor\application\controllers\configuracion\sede.php 59
+ERROR - 2016-05-19 14:38:54 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\controllers\configuracion\sede.php 59
+ERROR - 2016-05-19 15:23:50 --> 404 Page Not Found --> sede/agregarSeccion
+ERROR - 2016-05-19 15:52:56 --> Severity: Notice  --> Undefined property: Sede::$ss C:\xampp\htdocs\gestor\application\controllers\configuracion\sede.php 69
+ERROR - 2016-05-19 15:54:08 --> Severity: Notice  --> Undefined property: Sede::$ss C:\xampp\htdocs\gestor\application\controllers\configuracion\sede.php 69
+ERROR - 2016-05-19 15:54:43 --> Severity: Notice  --> Undefined property: Sede::$sede_seccion C:\xampp\htdocs\gestor\application\controllers\configuracion\sede.php 69
+ERROR - 2016-05-19 15:55:27 --> Severity: Notice  --> Undefined property: Sede::$sede_seccion C:\xampp\htdocs\gestor\application\controllers\configuracion\sede.php 69
+ERROR - 2016-05-19 15:56:05 --> Severity: Notice  --> Undefined property: Sede::$sede_seccion C:\xampp\htdocs\gestor\application\controllers\configuracion\sede.php 70
+ERROR - 2016-05-19 15:56:51 --> Severity: Notice  --> Undefined property: Sede::$sede_seccion C:\xampp\htdocs\gestor\application\controllers\configuracion\sede.php 69
+ERROR - 2016-05-19 16:42:55 --> Severity: Notice  --> Array to string conversion C:\xampp\htdocs\gestor\system\database\DB_active_rec.php 428
+ERROR - 2016-05-19 16:42:55 --> Query error: Unknown column 'Array' in 'where clause'
+ERROR - 2016-05-19 16:43:57 --> Severity: Notice  --> Array to string conversion C:\xampp\htdocs\gestor\system\database\DB_active_rec.php 428
+ERROR - 2016-05-19 16:43:57 --> Query error: Unknown column 'Array' in 'where clause'
+ERROR - 2016-05-19 16:45:10 --> Severity: Notice  --> Undefined property: stdClass::$sec_estado C:\xampp\htdocs\gestor\application\models\configuracion\sedeSeccion_model.php 42
+ERROR - 2016-05-19 16:59:13 --> Query error: Unknown column 'adm_sed_id' in 'on clause'

@@ -1,0 +1,10 @@
+ERROR - 2016-05-30 12:34:40 --> Severity: Notice  --> Undefined property: Home::$evento C:\xampp\htdocs\gestor\application\controllers\seccion\home.php 29
+ERROR - 2016-05-30 12:35:01 --> Query error: Unknown column 'home_sed_id' in 'where clause'
+ERROR - 2016-05-30 12:36:39 --> Severity: Notice  --> Undefined index: objEvento C:\xampp\htdocs\gestor\application\views\templates_c\21d612e9d96c28f0d1ae5f9b21d51e6d987626ce_0.file.home_index.tpl.php 63
+ERROR - 2016-05-30 12:36:39 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\21d612e9d96c28f0d1ae5f9b21d51e6d987626ce_0.file.home_index.tpl.php 63
+ERROR - 2016-05-30 13:06:42 --> Query error: Column 'hom_visible' cannot be null
+ERROR - 2016-05-30 14:46:47 --> Severity: Notice  --> Undefined variable: icon_visibleo C:\xampp\htdocs\gestor\application\controllers\seccion\home.php 41
+ERROR - 2016-05-30 14:46:47 --> Severity: Notice  --> Undefined variable: icon_visibleo C:\xampp\htdocs\gestor\application\controllers\seccion\home.php 41
+ERROR - 2016-05-30 14:46:47 --> Severity: Notice  --> Undefined variable: icon_visibleo C:\xampp\htdocs\gestor\application\controllers\seccion\home.php 41
+ERROR - 2016-05-30 14:46:47 --> Severity: Notice  --> Undefined variable: icon_visibleo C:\xampp\htdocs\gestor\application\controllers\seccion\home.php 41
+ERROR - 2016-05-30 14:46:47 --> Severity: Notice  --> Undefined variable: icon_visibleo C:\xampp\htdocs\gestor\application\controllers\seccion\home.php 41

@@ -1,0 +1,10 @@
+2016-05-24 11:26:52|Inició session|1|www.contenidos.devel/seguridad/seguridad/ingresar_sistema.html|Mozilla/5.0 (Windows NT 6.2; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0|1
+2016-05-24 11:37:48|Registró la pagina Menú(id::7)|1|www.contenidos.devel/seguridad/pagina/nuevo/1.html|Mozilla/5.0 (Windows NT 6.2; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0|1
+2016-05-24 11:37:59|Agregó permisos al tipo de administrador Admin(id::1) - Seccion web Menú(id::7)|1|www.contenidos.devel/seguridad/permiso/nuevo.html|Mozilla/5.0 (Windows NT 6.2; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0|1
+2016-05-24 13:09:43|Registro la sede (id::)|1|www.contenidos.devel/configuracion/menu/nuevo.html|Mozilla/5.0 (Windows NT 6.2; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0|1
+2016-05-24 14:57:40|Agregó permisos al tipo de administrador Administrador web(id::2) - Seccion web sede(id::3)|1|www.contenidos.devel/seguridad/permiso/nuevo.html|Mozilla/5.0 (Windows NT 6.2; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0|1
+2016-05-24 15:55:16|Registro menú Presentación(id::1)|1|www.contenidos.devel/configuracion/menu/nuevo/1.html|Mozilla/5.0 (Windows NT 6.2; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0|1
+2016-05-24 17:54:43|Registro menú Servicios(id::)|1|www.contenidos.devel/configuracion/menu/nuevo.html|Mozilla/5.0 (Windows NT 6.2; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0|1
+2016-05-24 17:55:51|Registro menú Psiquiatría Clínica(id::3)|1|www.contenidos.devel/configuracion/menu/nuevo/3.html|Mozilla/5.0 (Windows NT 6.2; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0|1
+2016-05-24 18:00:44|Registro menú Programas Adicionales(id::3)|1|www.contenidos.devel/configuracion/menu/nuevo/3.html|Mozilla/5.0 (Windows NT 6.2; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0|1
+2016-05-24 18:01:59|Registro menú Directorio(id::1)|1|www.contenidos.devel/configuracion/menu/nuevo/1.html|Mozilla/5.0 (Windows NT 6.2; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0|1

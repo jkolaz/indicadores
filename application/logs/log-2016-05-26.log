@@ -1,0 +1,13 @@
+ERROR - 2016-05-26 12:23:12 --> Severity: Notice  --> Undefined property: Index::$_function C:\xampp\htdocs\gestor\system\core\Controller.php 78
+ERROR - 2016-05-26 12:23:12 --> Severity: Notice  --> Undefined property: Notfound::$_function C:\xampp\htdocs\gestor\system\core\Controller.php 78
+ERROR - 2016-05-26 12:23:12 --> Severity: Notice  --> Undefined property: Notfound::$_function C:\xampp\htdocs\gestor\system\core\Controller.php 78
+ERROR - 2016-05-26 13:32:25 --> Severity: Warning  --> Missing argument 1 for Pagina::index() C:\xampp\htdocs\gestor\application\controllers\seguridad\pagina.php 24
+ERROR - 2016-05-26 13:32:25 --> Severity: Notice  --> Undefined variable: modulo C:\xampp\htdocs\gestor\application\controllers\seguridad\pagina.php 25
+ERROR - 2016-05-26 13:32:33 --> Severity: Warning  --> Missing argument 1 for Pagina::index() C:\xampp\htdocs\gestor\application\controllers\seguridad\pagina.php 24
+ERROR - 2016-05-26 13:32:33 --> Severity: Notice  --> Undefined variable: modulo C:\xampp\htdocs\gestor\application\controllers\seguridad\pagina.php 25
+ERROR - 2016-05-26 13:32:42 --> Severity: Warning  --> Missing argument 1 for Menu::submenu() C:\xampp\htdocs\gestor\application\controllers\configuracion\menu.php 85
+ERROR - 2016-05-26 13:32:42 --> Severity: Notice  --> Undefined variable: padre C:\xampp\htdocs\gestor\application\controllers\configuracion\menu.php 86
+ERROR - 2016-05-26 13:33:08 --> Severity: Warning  --> Missing argument 1 for Sede::seccionWeb() C:\xampp\htdocs\gestor\application\controllers\configuracion\sede.php 67
+ERROR - 2016-05-26 13:33:08 --> Severity: Notice  --> Undefined variable: id C:\xampp\htdocs\gestor\application\controllers\configuracion\sede.php 69
+ERROR - 2016-05-26 13:34:38 --> Severity: Warning  --> Missing argument 1 for Sede::seccionWeb() C:\xampp\htdocs\gestor\application\controllers\configuracion\sede.php 67
+ERROR - 2016-05-26 13:34:38 --> Severity: Notice  --> Undefined variable: id C:\xampp\htdocs\gestor\application\controllers\configuracion\sede.php 68

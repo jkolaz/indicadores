@@ -1,0 +1,100 @@
+ERROR - 2016-05-20 14:31:05 --> 404 Page Not Found --> favicon.ico
+ERROR - 2016-05-20 14:31:05 --> 404 Page Not Found --> favicon.ico
+ERROR - 2016-05-20 14:58:34 --> Severity: Notice  --> Undefined index: meuu C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:34 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:34 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:34 --> Severity: Notice  --> Undefined index: meuu C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:34 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:34 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:49 --> Severity: Notice  --> Undefined index: meuu C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:49 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:49 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:49 --> Severity: Notice  --> Undefined index: meuu C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:49 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:49 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:51 --> Severity: Notice  --> Undefined index: meuu C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:51 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:51 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:51 --> Severity: Notice  --> Undefined index: meuu C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:51 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:58:51 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 88
+ERROR - 2016-05-20 14:59:04 --> Severity: Notice  --> Undefined property: stdClass::$md_paginas C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 87
+ERROR - 2016-05-20 14:59:04 --> Severity: Notice  --> Undefined property: stdClass::$md_paginas C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 87
+ERROR - 2016-05-20 14:59:19 --> Severity: Notice  --> Undefined property: stdClass::$md_paginas C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 87
+ERROR - 2016-05-20 14:59:19 --> Severity: Notice  --> Undefined property: stdClass::$md_paginas C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 87
+ERROR - 2016-05-20 14:59:22 --> Severity: Notice  --> Undefined property: stdClass::$md_paginas C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 87
+ERROR - 2016-05-20 14:59:22 --> Severity: Notice  --> Undefined property: stdClass::$md_paginas C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 87
+ERROR - 2016-05-20 14:59:24 --> Severity: Notice  --> Undefined property: stdClass::$md_paginas C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 87
+ERROR - 2016-05-20 14:59:24 --> Severity: Notice  --> Undefined property: stdClass::$md_paginas C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 87
+ERROR - 2016-05-20 14:59:25 --> Severity: Notice  --> Undefined property: stdClass::$md_paginas C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 87
+ERROR - 2016-05-20 14:59:25 --> Severity: Notice  --> Undefined property: stdClass::$md_paginas C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 87
+ERROR - 2016-05-20 14:59:39 --> Severity: Notice  --> Undefined index: sub_menu C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 117
+ERROR - 2016-05-20 14:59:39 --> Severity: Notice  --> Undefined index:  C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 117
+ERROR - 2016-05-20 14:59:39 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 117
+ERROR - 2016-05-20 14:59:39 --> Severity: Notice  --> Undefined index: sub_menu C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 117
+ERROR - 2016-05-20 14:59:39 --> Severity: Notice  --> Undefined index:  C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 117
+ERROR - 2016-05-20 14:59:39 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\3da452b8985f80d96a13f3164ea05d1d6ba96a14_0.file.menu.tpl.php 117
+ERROR - 2016-05-20 15:09:00 --> Severity: Notice  --> Undefined property: stdClass::$pag_icon C:\xampp\htdocs\gestor\application\models\seguridad\permiso_model.php 76
+ERROR - 2016-05-20 15:09:00 --> Severity: Notice  --> Undefined property: stdClass::$pag_icon C:\xampp\htdocs\gestor\application\models\seguridad\permiso_model.php 76
+ERROR - 2016-05-20 15:09:00 --> Severity: Notice  --> Undefined property: stdClass::$pag_icon C:\xampp\htdocs\gestor\application\models\seguridad\permiso_model.php 76
+ERROR - 2016-05-20 15:17:56 --> 404 Page Not Found --> configuracion/administrador
+ERROR - 2016-05-20 15:18:04 --> 404 Page Not Found --> configuracion/administrador
+ERROR - 2016-05-20 15:18:51 --> Severity: Notice  --> Undefined property: Sede::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:19:01 --> 404 Page Not Found --> configuracion/tipoAdministrador
+ERROR - 2016-05-20 15:20:41 --> 404 Page Not Found --> configuracion/tipoAdministrador
+ERROR - 2016-05-20 15:21:10 --> 404 Page Not Found --> configuracion/tipoAdmini
+ERROR - 2016-05-20 15:21:30 --> 404 Page Not Found --> configuracion/tipoAdmini
+ERROR - 2016-05-20 15:22:02 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:26:59 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:28:45 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:28:45 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 135
+ERROR - 2016-05-20 15:28:46 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:28:46 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 135
+ERROR - 2016-05-20 15:28:47 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:28:47 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 135
+ERROR - 2016-05-20 15:28:47 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:28:47 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 135
+ERROR - 2016-05-20 15:28:47 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:28:47 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 135
+ERROR - 2016-05-20 15:28:47 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:28:47 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 135
+ERROR - 2016-05-20 15:28:48 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:28:48 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 135
+ERROR - 2016-05-20 15:28:48 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:28:48 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 135
+ERROR - 2016-05-20 15:28:53 --> 404 Page Not Found --> configuracion/tipoAdmin
+ERROR - 2016-05-20 15:29:50 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:30:12 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:31:07 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\gestor\application\helpers\utilitarios_helper.php:15) C:\xampp\htdocs\gestor\system\core\Common.php 441
+ERROR - 2016-05-20 15:31:54 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:32:44 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:32:45 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:32:45 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:32:45 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:32:45 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:32:46 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:32:46 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:32:46 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:33:13 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:33:14 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:33:14 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:33:14 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:34:07 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:34:08 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:34:08 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:34:09 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:34:09 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:34:09 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:34:10 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:38:05 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:38:06 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:38:06 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:38:07 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:38:07 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:38:07 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:38:07 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 15:38:26 --> Severity: Notice  --> Undefined property: Seccion::$permiso C:\xampp\htdocs\gestor\application\libraries\smartyci.php 134
+ERROR - 2016-05-20 16:53:03 --> 404 Page Not Found --> configuracion/tipoAdmin
+ERROR - 2016-05-20 17:15:01 --> 404 Page Not Found --> seguridad/modulo
+ERROR - 2016-05-20 18:05:54 --> Severity: Notice  --> Undefined index: objTipoAdmin C:\xampp\htdocs\gestor\application\views\templates_c\201ceefa6d4298c2416a177636c43945e898700d_0.file.modulo_index.tpl.php 32
+ERROR - 2016-05-20 18:05:54 --> Severity: Notice  --> Trying to get property of non-object C:\xampp\htdocs\gestor\application\views\templates_c\201ceefa6d4298c2416a177636c43945e898700d_0.file.modulo_index.tpl.php 32
