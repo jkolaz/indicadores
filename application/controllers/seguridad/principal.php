@@ -15,7 +15,6 @@ class Principal extends CI_Controller{
     //put your code here
     public function __construct() {
         parent::__construct();
-        $this->load->model('configuracion/menu_model', 'menu');
     }
     
     public function index(){

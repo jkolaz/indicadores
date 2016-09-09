@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2016-09-07 18:16:59
+<?php /* Smarty version 3.1.27, created on 2016-09-08 15:08:24
          compiled from "application\views\templates\inc\menu.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:2739457d09feb12ae76_41080477%%*/
+/*%%SmartyHeaderCode:603257d1c5387f1953_13671641%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,26 +9,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3da452b8985f80d96a13f3164ea05d1d6ba96a14' => 
     array (
       0 => 'application\\views\\templates\\inc\\menu.tpl',
-      1 => 1473289800,
+      1 => 1473365302,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2739457d09feb12ae76_41080477',
+  'nocache_hash' => '603257d1c5387f1953_13671641',
   'variables' => 
   array (
     'SERVER_ADMIN' => 0,
     'menu' => 0,
+    'aUbi' => 0,
     'menu_sede' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_57d09feb175d16_91226933',
+  'unifunc' => 'content_57d1c53891f9f2_50463903',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_57d09feb175d16_91226933')) {
-function content_57d09feb175d16_91226933 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_57d1c53891f9f2_50463903')) {
+function content_57d1c53891f9f2_50463903 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '2739457d09feb12ae76_41080477';
+$_smarty_tpl->properties['nocache_hash'] = '603257d1c5387f1953_13671641';
 ?>
 <!-- start: sidebar -->
 <aside id="sidebar-left" class="sidebar-left">
@@ -78,7 +79,7 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['id']['index_next'] = $_smart
 $_smarty_tpl->tpl_vars['smarty']->value['section']['id']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['id']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['id']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['id']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['id']['total']);
 ?>
-                    <li class="nav-parent">
+                    <li class="nav-parent<?php if ($_smarty_tpl->tpl_vars['aUbi']->value['modulo'] == $_smarty_tpl->tpl_vars['menu']->value[$_smarty_tpl->getVariable('smarty')->value['section']['id']['index']]->mod_id) {?> nav-expanded nav-active<?php }?>">
                         <a>
                             <i class="fa <?php echo $_smarty_tpl->tpl_vars['menu']->value[$_smarty_tpl->getVariable('smarty')->value['section']['id']['index']]->mod_icon;?>
 " aria-hidden="true"></i>
@@ -111,10 +112,9 @@ $_smarty_tpl->tpl_vars['smarty']->value['section']['sub_menu']['index_next'] = $
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sub_menu']['first']      = ($_smarty_tpl->tpl_vars['smarty']->value['section']['sub_menu']['iteration'] == 1);
 $_smarty_tpl->tpl_vars['smarty']->value['section']['sub_menu']['last']       = ($_smarty_tpl->tpl_vars['smarty']->value['section']['sub_menu']['iteration'] == $_smarty_tpl->tpl_vars['smarty']->value['section']['sub_menu']['total']);
 ?>
-                            <li>
+                            <li <?php if ($_smarty_tpl->tpl_vars['aUbi']->value['pagina'] == $_smarty_tpl->tpl_vars['menu']->value[$_smarty_tpl->getVariable('smarty')->value['section']['id']['index']]->mod_paginas[$_smarty_tpl->getVariable('smarty')->value['section']['sub_menu']['index']]->pag_id) {?>class="nav-active"<?php }?>>
                                 <a href="<?php echo $_smarty_tpl->tpl_vars['SERVER_ADMIN']->value;
-echo $_smarty_tpl->tpl_vars['menu']->value[$_smarty_tpl->getVariable('smarty')->value['section']['id']['index']]->mod_url;?>
-/<?php echo $_smarty_tpl->tpl_vars['menu']->value[$_smarty_tpl->getVariable('smarty')->value['section']['id']['index']]->mod_paginas[$_smarty_tpl->getVariable('smarty')->value['section']['sub_menu']['index']]->pag_url;?>
+echo $_smarty_tpl->tpl_vars['menu']->value[$_smarty_tpl->getVariable('smarty')->value['section']['id']['index']]->mod_paginas[$_smarty_tpl->getVariable('smarty')->value['section']['sub_menu']['index']]->url;?>
 .html">
                                     <i class="fa <?php echo $_smarty_tpl->tpl_vars['menu']->value[$_smarty_tpl->getVariable('smarty')->value['section']['id']['index']]->mod_paginas[$_smarty_tpl->getVariable('smarty')->value['section']['sub_menu']['index']]->pag_icon;?>
 " aria-hidden="true"></i>

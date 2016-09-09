@@ -126,6 +126,9 @@
 {if $form gt 0}
 <script src="{$DIR_PRINCIPAL}assets/javascripts/forms/examples.advanced.form.js" /></script>
 {/if}
+{if $chart gt 0}
+<script type="text/javascript" src="{$DIR_PRINCIPAL}assets/chart/Chart.js"></script>
+{/if}
 {if $js_script neq ""}
 <script src="{$DIR_PRINCIPAL}assets/{$js_script}"></script>
 {/if}

@@ -22,7 +22,7 @@
                     </li>
                     {if $menu|@count gt 0}
                         {section name=id loop=$menu}
-                    <li class="nav-parent">
+                    <li class="nav-parent{if $aUbi.modulo eq $menu[id]->mod_id} nav-expanded nav-active{/if}">
                         <a>
                             <i class="fa {$menu[id]->mod_icon}" aria-hidden="true"></i>
                             <span>{$menu[id]->mod_nombre}</span>
@@ -30,8 +30,8 @@
                         {if $menu[id]->mod_paginas|@count gt 0}
                         <ul class="nav nav-children">
                             {section name=sub_menu loop=$menu[id]->mod_paginas}
-                            <li>
-                                <a href="{$SERVER_ADMIN}{$menu[id]->mod_url}/{$menu[id]->mod_paginas[sub_menu]->pag_url}.html">
+                            <li {if $aUbi.pagina eq $menu[id]->mod_paginas[sub_menu]->pag_id}class="nav-active"{/if}>
+                                <a href="{$SERVER_ADMIN}{$menu[id]->mod_paginas[sub_menu]->url}.html">
                                     <i class="fa {$menu[id]->mod_paginas[sub_menu]->pag_icon}" aria-hidden="true"></i>
                                     <span>{$menu[id]->mod_paginas[sub_menu]->pag_nombre}</span>
                                 </a>

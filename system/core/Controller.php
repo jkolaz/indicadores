@@ -83,13 +83,39 @@ class CI_Controller {
                         break;
                 }
             }else{
-                if($this->_carpeta == 'seguridad' && $this->_class == 'seguridad' && $this->_method == 'ingresar_sistema'){
-                    
-                }else{
+                $filtrar = 1;
+                switch ($this->_carpeta){
+                    case 'seguridad':
+                        switch ($this->_class){
+                            case 'seguridad':
+                                switch ($this->_method){
+                                    case 'ingresar_sistema':
+                                    case 'nopermiso':
+                                    case 'logout':
+                                        $filtrar = 0;
+                                        break;
+                                }
+                                break;
+                            case 'principal':                                
+                            case 'permiso':
+                                $filtrar = 0;
+                                break;
+                        }
+                        break;
+                    case 'prueba':
+                        $filtrar = 0;
+                        break;
+                }
+                
+                
+                if($filtrar == 1){
                     if($id>0){
-
+                        $rol = $this->session->userdata('idRol');
+                        $this->getPermiso($rol, $this->_class, $this->_method);
                     }else{
-                        redirect('index/index/2');
+                        $this->session->set_userdata('message_id', 2);
+                        $this->session->set_userdata('message', 'ERR6');
+                        redirect(URL_NO_LOGIN);
                     }
                 }
             }
@@ -161,7 +187,7 @@ class CI_Controller {
              * 2: warming
              */
             if($admin == 0){
-                $admin = $usuario = $this->session->userdata('user');
+                $admin = $this->session->userdata('user');
             }
             if($tipo == ""){
                 $tipo = "web";
@@ -170,14 +196,51 @@ class CI_Controller {
             if ( ! $fp = @fopen($archivo, FOPEN_WRITE_CREATE)){
                 die('No se pudo crear el fichero...!');
             }
-            $linea = date('Y-m-d H:i:s'). '|'.$mensaje.'|'.$admin. '|'. $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] . '|'. $_SERVER['HTTP_USER_AGENT'].'|'.$level."\n";
+            $linea = array();
+            $linea[] = date('Y-m-d H:i:s');
+            $linea[] = $mensaje;
+            $linea[] = $admin;
+            $linea[] = $_SERVER['SERVER_NAME'];
+            $linea[] = $_SERVER['REQUEST_URI'];
+            $linea[] = $_SERVER['HTTP_USER_AGENT'];
+            $linea[] = $level;
+            $linea[] = ObtenerIP();
+            
+            $lineatext = implode('|', $linea)."\n";
+            
             flock($fp, LOCK_EX);
-            fwrite($fp, $linea);
+            fwrite($fp, $lineatext);
             flock($fp, LOCK_UN);
             fclose($fp);
 
             @chmod($archivo, FILE_WRITE_MODE);
             return TRUE;
+        }
+        
+        public function getPermiso($rol, $pagina){
+            $verificar = 1;
+            
+            switch ($pagina){
+                case 'pagina':
+                    $verificar = 0;
+                    break;
+            }
+            
+            if($verificar == 1){
+                $permiso = $this->permiso_model->getPermiso($rol, $pagina);
+                if($permiso <= 0){
+                    redirect(URL_NO_PERMISO);
+                }
+            }
+        }
+        
+        public function getPermisoOS($pagina){
+            $rol = $this->session->userdata('idRol');
+            $this->permiso_model->_access = $pagina;
+            $permiso = $this->permiso_model->getPermiso($rol);
+            if($permiso <= 0){
+                redirect(URL_NO_PERMISO);
+            }
         }
 }
 // END Controller class

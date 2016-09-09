@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2016-09-07 18:16:58
+<?php /* Smarty version 3.1.27, created on 2016-09-08 16:39:08
          compiled from "application\views\templates\inc\footer.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:1624757d09feaf338f6_90605874%%*/
+/*%%SmartyHeaderCode:3109457d1da7c10dca7_56537316%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ac84eaada7776799ad147a4fade162ae5592b345' => 
     array (
       0 => 'application\\views\\templates\\inc\\footer.tpl',
-      1 => 1473289800,
+      1 => 1473370737,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1624757d09feaf338f6_90605874',
+  'nocache_hash' => '3109457d1da7c10dca7_56537316',
   'variables' => 
   array (
     'SERVER_ADMIN' => 0,
@@ -23,17 +23,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fileupload' => 0,
     'wizard' => 0,
     'formulario' => 0,
+    'chart' => 0,
     'js_script' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_57d09feb0302a1_05555675',
+  'unifunc' => 'content_57d1da7c184a21_76431297',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_57d09feb0302a1_05555675')) {
-function content_57d09feb0302a1_05555675 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_57d1da7c184a21_76431297')) {
+function content_57d1da7c184a21_76431297 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '1624757d09feaf338f6_90605874';
+$_smarty_tpl->properties['nocache_hash'] = '3109457d1da7c10dca7_56537316';
 ?>
 <!-- MODAL INICIO INFO-->
 	<div id="modalInfo" class="modal-block modal-block-info mfp-hide">
@@ -277,6 +278,12 @@ assets/javascripts/ui-elements/examples.modals.js"><?php echo '</script'; ?>
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['DIR_PRINCIPAL']->value;?>
 assets/javascripts/forms/examples.advanced.form.js" /><?php echo '</script'; ?>
+>
+<?php }?>
+<?php if ($_smarty_tpl->tpl_vars['chart']->value > 0) {?>
+<?php echo '<script'; ?>
+ type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['DIR_PRINCIPAL']->value;?>
+assets/chart/Chart.js"><?php echo '</script'; ?>
 >
 <?php }?>
 <?php if ($_smarty_tpl->tpl_vars['js_script']->value != '') {?>

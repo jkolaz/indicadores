@@ -15,6 +15,7 @@ class Permiso_model extends CI_Model{
     //put your code here
     private static $_table;
     private static $_PK;
+    public $_access;
     public $per_id;
     public $per_estado;
     public $per_crear;
@@ -37,6 +38,7 @@ class Permiso_model extends CI_Model{
                     gc_pagina.pag_nombre,
                     gc_pagina.pag_url,
                     gc_pagina.pag_icon,
+                    gc_pagina.pag_modulo_url,
                     gc_modulo.mod_id,
                     gc_modulo.mod_nombre,
                     gc_modulo.mod_url
@@ -73,11 +75,16 @@ class Permiso_model extends CI_Model{
                     foreach ($objModulo as $id=>$valor){
                         foreach ($result as $val){
                             if($valor->mod_id == $val->mod_id){
+                                $url = $valor->mod_url.'/'.$val->pag_url;
+                                if($val->pag_modulo_url != ""){
+                                    $url = $val->pag_modulo_url.'/'.$val->pag_url;
+                                }
                                 $std = new stdClass();
                                 $std->pag_id = $val->pag_id;
                                 $std->pag_nombre = $val->pag_nombre;
                                 $std->pag_url = $val->pag_url;
                                 $std->pag_icon = $val->pag_icon;
+                                $std->url = $url;
                                 $objModulo[$id]->mod_paginas[] = $std;
                             }
                         }
@@ -132,6 +139,59 @@ class Permiso_model extends CI_Model{
             return $query->result();
         }
         return NULL;
+    }
+    
+    public function buscar_ubicacion($controlador, $funcion){
+        $resultado['modulo'] = 0;
+        $resultado['pagina'] = 0;
+        if($this->_access > 0){
+            $where1['pag_id'] = $this->_access;
+            $where1['pag_estado'] = 1;
+            $query1 = $this->db->where($where1)->get('gc_pagina', 1);
+            if($query1->num_rows > 0){
+                $result1 = $query1->row();
+                $resultado['modulo'] = $result1->pag_mod_id;
+                $resultado['pagina'] = $result1->pag_id;
+            }
+        }else{
+            $where['pag_url'] = $controlador.'/'.$funcion;
+            $where['pag_estado'] = 1;
+
+            $query = $this->db->where($where)->get('gc_pagina', 1);
+            if($query->num_rows > 0){
+                $result = $query->row();
+                $resultado['modulo'] = $result->pag_mod_id;
+                $resultado['pagina'] = $result->pag_id;
+            }
+        }
+        return $resultado;
+    }
+    
+    public function getPermiso($id, $pagina = ""){
+        if($this->_access > 0){
+            $where['pag_estado'] = 1;
+            $where['per_pag_id'] = $this->_access;
+            $where['per_estado'] = 1;
+            $where['per_ta_id'] = $id;
+            $where['mod_estado'] = 1;
+
+            $query = $this->db->where($where)
+                        ->join('gc_pagina', 'pag_id=per_pag_id')
+                        ->join('gc_modulo', 'mod_id=pag_mod_id')
+                        ->from(self::$_table)->count_all_results();
+        }else{
+            $where['pag_estado'] = 1;
+            $where['per_estado'] = 1;
+            $where['per_ta_id'] = $id;
+            $where['mod_estado'] = 1;
+
+            $query = $this->db->where($where)
+                        ->like('pag_url', $pagina, 'after')
+                        ->join('gc_pagina', 'pag_id=per_pag_id')
+                        ->join('gc_modulo', 'mod_id=pag_mod_id')
+                        ->from(self::$_table)->count_all_results();
+        }
+        return $query;
     }
     
     public function getCountAll($where = array()){

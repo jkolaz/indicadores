@@ -61,6 +61,7 @@ class Smartyci extends Smarty{
         $this->assign("formulario", $this->formulario);
         $this->assign("form", $this->form);
         $this->assign("js_script", '');
+        $this->assign("chart", 0);
         
         //$this->display_web();
     }
@@ -141,6 +142,8 @@ class Smartyci extends Smarty{
         if($sede > 0){
             $objPermisoSede = $this->ci->permiso_model->getPermisosByUser($adm, $sede);
         }
+        $arrUbi = $this->ci->permiso_model->buscar_ubicacion($this->ci->_class, $this->ci->_method);
+        $this->assign('aUbi', $arrUbi);
         $this->assign('menu', $objPermiso);
         $this->assign('menu_sede', $objPermisoSede);
         $this->include_template("menu", "inc/menu", $cache_id);
@@ -181,8 +184,11 @@ class Smartyci extends Smarty{
                 "ERR2" => "No se encuentra lo solicitado.",
                 "ERR3" => "El tipo de archivo no es aceptado.",
                 "ERR4" => "Ocurrio un error al subir el archivo.",
+                "ERR5" => "Algo va mal.<strong>Usuario y/o contraseña</strong> incorrecto, intente nuevamente.",
+                "ERR6" => "Ingrese su <strong>Usuario y/o contraseña</strong> para poder acceder al sistema.",
                 "WRM1" => "El nombre del registro ya existe.",
-                "WRM2" => "El nombre de usuario ya existe."
+                "WRM2" => "El nombre de usuario ya existe.",
+                "WRM3" => "El DNI de usuario ya existe en nuestros registros, por favor ingrese otro."
             );
             $msg = $aMessage[$message];
         }
