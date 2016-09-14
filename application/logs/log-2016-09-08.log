@@ -1,6 +1,0 @@
-ERROR - 2016-09-08 15:17:22 --> Severity: Notice  --> Undefined property: stdClass::$pag_modulo_url C:\xampp\htdocs\indicadores\application\models\seguridad\permiso_model.php 78
-ERROR - 2016-09-08 15:17:22 --> Severity: Notice  --> Undefined property: stdClass::$pag_modulo_url C:\xampp\htdocs\indicadores\application\models\seguridad\permiso_model.php 78
-ERROR - 2016-09-08 15:17:22 --> Severity: Notice  --> Undefined property: stdClass::$pag_modulo_url C:\xampp\htdocs\indicadores\application\models\seguridad\permiso_model.php 78
-ERROR - 2016-09-08 15:17:22 --> Severity: Notice  --> Undefined property: stdClass::$pag_modulo_url C:\xampp\htdocs\indicadores\application\models\seguridad\permiso_model.php 78
-ERROR - 2016-09-08 15:17:22 --> Severity: Notice  --> Undefined property: stdClass::$pag_modulo_url C:\xampp\htdocs\indicadores\application\models\seguridad\permiso_model.php 78
-ERROR - 2016-09-08 15:18:15 --> Query error: Unknown column 'gc_pagina.pag_modulo_url' in 'field list'

@@ -1,6 +1,0 @@
-ERROR - 2016-07-05 17:46:37 --> Severity: Notice  --> Undefined index: sede C:\xampp\htdocs\gestor\application\libraries\smartyci.php 153
-ERROR - 2016-07-05 17:46:37 --> Severity: Notice  --> Undefined index: rol C:\xampp\htdocs\gestor\application\libraries\smartyci.php 156
-ERROR - 2016-07-05 17:46:37 --> Severity: Notice  --> Undefined index: usuario C:\xampp\htdocs\gestor\application\views\templates_c\f5a5aa98a90d822013fe4926d273ea0d7a8146d1_0.file.cuenta.tpl.php 47
-ERROR - 2016-07-05 17:46:37 --> Severity: Notice  --> Undefined index: usuario C:\xampp\htdocs\gestor\application\views\templates_c\f5a5aa98a90d822013fe4926d273ea0d7a8146d1_0.file.cuenta.tpl.php 51
-ERROR - 2016-07-05 17:46:37 --> Severity: Notice  --> Undefined index: correo C:\xampp\htdocs\gestor\application\views\templates_c\f5a5aa98a90d822013fe4926d273ea0d7a8146d1_0.file.cuenta.tpl.php 52
-ERROR - 2016-07-05 17:46:37 --> Severity: Notice  --> Undefined index: usuario C:\xampp\htdocs\gestor\application\views\templates_c\f5a5aa98a90d822013fe4926d273ea0d7a8146d1_0.file.cuenta.tpl.php 54

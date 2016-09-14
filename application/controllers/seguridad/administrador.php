@@ -22,9 +22,7 @@ class Administrador extends CI_Controller{
     }
     
     public function index(){
-        if($this->_rol != 1){
-            redirect(URL_PANEL);
-        }
+        $this->permiso_model->_access = 3;
         $where['adm_estado <'] = 2;
         $objTipoAdmin = $this->adm->getTipoAdmin($where);
         $user = $this->session->userdata('user');

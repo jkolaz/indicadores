@@ -1,8 +1,0 @@
-ERROR - 2016-09-09 17:23:02 --> Severity: Notice  --> Undefined index: sede C:\xampp\htdocs\indicadores\application\libraries\smartyci.php 156
-ERROR - 2016-09-09 17:23:02 --> Severity: Notice  --> Undefined index: rol C:\xampp\htdocs\indicadores\application\libraries\smartyci.php 159
-ERROR - 2016-09-09 17:23:02 --> Severity: Notice  --> Undefined index: usuario C:\xampp\htdocs\indicadores\application\views\templates_c\f5a5aa98a90d822013fe4926d273ea0d7a8146d1_0.file.cuenta.tpl.php 47
-ERROR - 2016-09-09 17:23:02 --> Severity: Notice  --> Undefined index: usuario C:\xampp\htdocs\indicadores\application\views\templates_c\f5a5aa98a90d822013fe4926d273ea0d7a8146d1_0.file.cuenta.tpl.php 51
-ERROR - 2016-09-09 17:23:02 --> Severity: Notice  --> Undefined index: correo C:\xampp\htdocs\indicadores\application\views\templates_c\f5a5aa98a90d822013fe4926d273ea0d7a8146d1_0.file.cuenta.tpl.php 52
-ERROR - 2016-09-09 17:23:02 --> Severity: Notice  --> Undefined index: usuario C:\xampp\htdocs\indicadores\application\views\templates_c\f5a5aa98a90d822013fe4926d273ea0d7a8146d1_0.file.cuenta.tpl.php 54
-ERROR - 2016-09-09 17:23:02 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and gc_administrador.adm_estado = 1
-                        and gc_tipo_admin.t' at line 22

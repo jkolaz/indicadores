@@ -20,6 +20,7 @@ class Log extends CI_Controller{
     }
     
     public function index(){
+        $this->permiso_model->_access = 4;
         $action = $this->input->post('txt_action');
         if(isset($action) && $action == 'buscar'){
             $fecha = $this->input->post('txt_fecha');
@@ -37,6 +38,7 @@ class Log extends CI_Controller{
     }
     
     public function readLog($fecha){
+        $this->permiso_model->_access = 4;
         $p_file = PATH_ADMIN . "application/logs/web/".$fecha.".log";
         $linea = array();
         if (file_exists($p_file)) {
@@ -46,16 +48,19 @@ class Log extends CI_Controller{
         $log = array();
         if(count($linea) > 0){
             foreach ($linea as $val){
-               $aLinea = explode("|", $val);
-               
-               $objAdmin = $this->adm->getAdminById($aLinea[2]);
-               
-               $stdLinea = new stdClass();
-               $stdLinea->fecha = $aLinea[0];
-               $stdLinea->mensaje = $aLinea[1];
-               $stdLinea->admin = $objAdmin->adm_nombre.' '.$objAdmin->adm_apellidos;
-               
-               $log[] = $stdLinea;
+                $aLinea = explode("|", $val);
+
+                $objAdmin = $this->adm->getAdminById($aLinea[2]);
+
+                $stdLinea = new stdClass();
+                $stdLinea->fecha = $aLinea[0];
+                $stdLinea->mensaje = $aLinea[1];
+                if($objAdmin){
+                    $stdLinea->admin = $objAdmin->adm_nombre.' '.$objAdmin->adm_apellidos;
+                }else{
+                    $stdLinea->admin = '<span style="color: red;">Usuario no registrado en la base de datos.</span>';
+                }
+                $log[] = $stdLinea;
             }
         }
         $this->smartyci->assign('log', $log);
