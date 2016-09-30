@@ -62,6 +62,7 @@ class Smartyci extends Smarty{
         $this->assign("form", $this->form);
         $this->assign("js_script", '');
         $this->assign("chart", 0);
+        $this->assign("hc", 0);
         
         //$this->display_web();
     }

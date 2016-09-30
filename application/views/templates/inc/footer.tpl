@@ -132,3 +132,7 @@
 {if $js_script neq ""}
 <script src="{$DIR_PRINCIPAL}assets/{$js_script}"></script>
 {/if}
+{if $hc gt 0}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+{/if}
