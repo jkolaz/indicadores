@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2016-09-30 11:24:28
+<?php /* Smarty version 3.1.27, created on 2016-10-02 08:06:45
          compiled from "application\views\templates\inc\cuenta.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:2662157ee91bcb263f3_39849239%%*/
+/*%%SmartyHeaderCode:2055057f106651b1017_52075913%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f5a5aa98a90d822013fe4926d273ea0d7a8146d1' => 
     array (
       0 => 'application\\views\\templates\\inc\\cuenta.tpl',
-      1 => 1473289800,
+      1 => 1474820695,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2662157ee91bcb263f3_39849239',
+  'nocache_hash' => '2055057f106651b1017_52075913',
   'variables' => 
   array (
     'DIR_PRINCIPAL' => 0,
@@ -26,13 +26,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_57ee91bcb3b342_64404583',
+  'unifunc' => 'content_57f10665267d19_40486942',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_57ee91bcb3b342_64404583')) {
-function content_57ee91bcb3b342_64404583 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_57f10665267d19_40486942')) {
+function content_57f10665267d19_40486942 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '2662157ee91bcb263f3_39849239';
+$_smarty_tpl->properties['nocache_hash'] = '2055057f106651b1017_52075913';
 ?>
 <!-- start: search & user box -->
 <div class="header-right">
