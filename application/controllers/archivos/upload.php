@@ -36,21 +36,21 @@ class Upload extends CI_Controller{
         $this->smartyci->show_page();
     }
     
-    public function cie10(){
+    public function registro(){
         $action = $this->input->post('txt_action');
         if(isset($action) && $action == 'nuevo'){
+            $this->archivo->getValsForm($this->input->post());
             if(isset($_FILES["txt_archivo"]["name"]) && $_FILES["txt_archivo"]["name"] != ""){
                 if ($_FILES["txt_archivo"]["type"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
                         if(!is_array($_FILES["txt_archivo"]["name"])){
                             $extension = pathinfo($_FILES["txt_archivo"]["name"]);
-                            $destination = uniqid('cie10_'.date('YmdHis').'_').'.'.$extension['extension'];
+                            $destination = uniqid($this->archivo->arc_type.'_'.date('YmdHis').'_').'.'.$extension['extension'];
                             if(move_uploaded_file($_FILES['txt_archivo']['tmp_name'], PATH_GALLERY.$destination)){
                                 $this->archivo->arc_nombre = $destination;
                             }
                         }
                     }
             }
-            $this->archivo->arc_type = 'cie10';
             if($this->archivo->arc_nombre != ''){
                 if($this->archivo->insert()){
                     $this->writeLog("Subio archivo {$this->archivo->arc_nombre}(id::{$this->archivo->arc_id})");
@@ -69,17 +69,57 @@ class Upload extends CI_Controller{
             }
         }else{
             $this->smartyci->assign('form', 1);
-            $this->smartyci->assign('listado', 'Subir Archivos CIE10');
+            $this->smartyci->assign('listado', 'Subir Archivos');
             $this->smartyci->show_page();
         }
     }
     
-    public function procesar($id){
+    public function procesar($id, $type){
+        switch ($type){
+            case 'cie10':
+                $this->procesar_cie10($id);
+                break;
+            case 'ce':
+                $this->procesar_ce($id);
+                break;
+            default :
+                redirect('archivos/upload/index');
+        }
+    }
+    
+    public function procesar_ce($id){
         $this->archivo->getRow($id);
         if($this->archivo->arc_id > 0){
             $archivo = PATH_GALLERY.$this->archivo->arc_nombre;
             $row = $this->archivo->arc_num_lines_read+2;
-            $limit = $row+100;
+            $limit = $row+150;
+            if(file_exists($archivo)){
+                $this->load->library('PHPExcel/Classes/PHPExcel.php');
+                $objPHPExcel = PHPExcel_IOFactory::load($archivo);
+                $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(NULL, NULL, TRUE, TRUE);
+                $permit = TRUE;
+                while($row < $limit && $permit == TRUE){
+                    $aRow = $allDataInSheet[$row];
+                    if(trim($aRow['A']) != ''){
+                        $row++;
+                    }else{
+                        $permit = FALSE;
+                        $this->archivo->arc_estado = 2;
+                    }
+                }
+            }
+            redirect('archivos/upload/index');
+        }else{
+            redirect('archivos/upload/index');
+        }
+    }
+    
+    public function procesar_cie10($id){
+        $this->archivo->getRow($id);
+        if($this->archivo->arc_id > 0){
+            $archivo = PATH_GALLERY.$this->archivo->arc_nombre;
+            $row = $this->archivo->arc_num_lines_read+2;
+            $limit = $row+300;
             if(file_exists($archivo)){
                 $this->load->library('PHPExcel/Classes/PHPExcel.php');
                 $objPHPExcel = PHPExcel_IOFactory::load($archivo);
@@ -107,9 +147,8 @@ class Upload extends CI_Controller{
                     $this->session->set_userdata('message_id', 2);
                     $this->session->set_userdata('message', 'ERR1');
                 }
-                redirect('archivos/upload/index');
             }
-            
+            redirect('archivos/upload/index');
         }else{
             redirect('archivos/upload/index');
         }

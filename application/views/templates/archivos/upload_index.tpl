@@ -37,7 +37,7 @@
                             </a>
                         </td>
                         <td class="actions">
-                            <a href="{$SERVER_ADMIN}{$controlador}/procesar/{$objArchivo[tipo]->arc_id}.html" title="Editar {$objArchivo[tipo]->arc_nombre}">
+                            <a href="{$SERVER_ADMIN}{$controlador}/procesar/{$objArchivo[tipo]->arc_id}/{$objArchivo[tipo]->arc_type}.html" title="Editar {$objArchivo[tipo]->arc_nombre}">
                                 <i class="fa fa-share"></i> Procesar
                             </a>
                         </td>

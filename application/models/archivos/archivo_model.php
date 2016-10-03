@@ -46,6 +46,9 @@ class Archivo_model extends CI_Model{
         if(isset($post['txt_archivo'])){
             $this->arc_nombre = $post['txt_archivo'];
         }
+        if(isset($post['txt_arc_type'])){
+            $this->arc_type = $post['txt_arc_type'];
+        }
     }
     
     public function insert(){
