@@ -15,6 +15,7 @@
                                 <option value="">Seleccionar</option>
                                 <option value="ce">Consulta externa</option>
                                 <option value="cie10">CIE10</option>
+                                <option value="pac">Paciente</option>
                             </select>
                         </div>
                     </div>

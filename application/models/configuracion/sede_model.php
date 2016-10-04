@@ -41,8 +41,7 @@ class Sede_model extends CI_Model{
         $this->load->database();
     }
     
-    public function getAllSede(){
-        $where = array();
+    public function getAllSede($where = array()){
         $where['sed_estado <='] = 1;
         
         $query = $this->db->where($where)->order_by('sed_nombre')->get(self::$_table);
@@ -51,6 +50,21 @@ class Sede_model extends CI_Model{
             return $query->result();
         }
         return NULL;
+    }
+    public function getSedeCBO($where = array(), $selected = 0){
+        $data = NULL;
+        $query = $this->db->where($where)->order_by('sed_nombre')->get(self::$_table);
+        
+        if($query->num_rows > 0){
+            $data = $query->result();
+            foreach ($data as $id=>$valor){
+                $data[$id]->selected = '';
+                if($selected == $valor->sed_id){
+                    $data[$id]->selected = 'selected';
+                }
+            }
+        }
+        return $data;
     }
     
     public function getSedeById($id){

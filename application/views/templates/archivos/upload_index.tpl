@@ -13,6 +13,19 @@
                     </button>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-sm-1 control-label"><b>Sede</b></label>
+                <div class="col-sm-3">
+                    <select data-plugin-selectTwo id="txt_sede" name="txt_sede" required class="form-control populate">
+                        <option value="">Seleccionar</option>
+                        {if $objSedeCBO|@count gt 0}
+                            {section name=i loop=$objSedeCBO}
+                        <option value="{$objSedeCBO[i]->sed_id}" {$objSedeCBO[i]->selected}>{$objSedeCBO[i]->sed_nombre}</option>
+                            {/section}
+                        {/if}
+                    </select>
+                </div>
+            </div>
         </div>
         <table class="table table-striped mb-none datatable-sinButtons" data-swf-path="assets/vendor/jquery-datatables/extras/TableTools/swf/copy_csv_xls_pdf.swf">
             <thead>
@@ -37,7 +50,7 @@
                             </a>
                         </td>
                         <td class="actions">
-                            <a href="{$SERVER_ADMIN}{$controlador}/procesar/{$objArchivo[tipo]->arc_id}/{$objArchivo[tipo]->arc_type}.html" title="Editar {$objArchivo[tipo]->arc_nombre}">
+                            <a href="javascript:;" onclick="procesar_archivo({$objArchivo[tipo]->arc_id},'{$objArchivo[tipo]->arc_type}')" title="Procesar {$objArchivo[tipo]->arc_nombre}">
                                 <i class="fa fa-share"></i> Procesar
                             </a>
                         </td>

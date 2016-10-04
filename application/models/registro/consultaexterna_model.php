@@ -106,6 +106,11 @@ class Consultaexterna_model extends ci_model{
         return NULL;
     }
     
+    public function insert_batch($insert){
+        $this->db->insert_batch(self::$_table, $insert); 
+        return true;
+    }
+    
     public function getRow($id){
         $where[self::$_PK] = $id;
         $query = $this->db->where($where)->get(self::$_table);
