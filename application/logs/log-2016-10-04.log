@@ -1,0 +1,59 @@
+ERROR - 2016-10-04 11:29:20 --> Severity: Warning  --> fopen(C:/xampp/htdocs/indicadores/application/logs/web/20161004.log): failed to open stream: No such file or directory C:\xampp\htdocs\indicadores\system\core\Controller.php 196
+ERROR - 2016-10-04 15:05:43 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM (`ind_periodo`)
+WHERE `peri_estado` =  1
+GROUP BY date_format(ind_periodo.p' at line 2
+ERROR - 2016-10-04 15:06:21 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM (`ind_periodo`)
+WHERE `peri_estado` =  1
+GROUP BY date_format(ind_periodo.p' at line 2
+ERROR - 2016-10-04 15:06:31 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM (`ind_periodo`)
+WHERE `peri_estado` =  1
+GROUP BY date_format(ind_periodo.p' at line 2
+ERROR - 2016-10-04 15:06:42 --> Severity: Notice  --> Undefined variable: order_by C:\xampp\htdocs\indicadores\application\models\reporte\periodo_model.php 92
+ERROR - 2016-10-04 15:06:42 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM (`ind_periodo`)
+WHERE `peri_estado` =  1
+GROUP BY date_format(ind_periodo.p' at line 2
+ERROR - 2016-10-04 15:06:48 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM (`ind_periodo`)
+WHERE `peri_estado` =  1
+GROUP BY date_format(ind_periodo.p' at line 2
+ERROR - 2016-10-04 15:08:11 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM (`ind_periodo`)
+WHERE `peri_estado` =  1
+GROUP BY date_format(ind_periodo.p' at line 2
+ERROR - 2016-10-04 15:08:27 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY `peri_id` desc' at line 5
+ERROR - 2016-10-04 15:09:07 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY `peri_id` desc' at line 5
+ERROR - 2016-10-04 15:09:08 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY `peri_id` desc' at line 5
+ERROR - 2016-10-04 15:09:08 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY `peri_id` desc' at line 5
+ERROR - 2016-10-04 15:09:09 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY `peri_id` desc' at line 5
+ERROR - 2016-10-04 16:12:06 --> Severity: Notice  --> Undefined property: Reporte::$periodo C:\xampp\htdocs\indicadores\application\controllers\reporte\reporte.php 34
+ERROR - 2016-10-04 16:12:37 --> Severity: Notice  --> Undefined property: Reporte::$periodo C:\xampp\htdocs\indicadores\application\controllers\reporte\reporte.php 34
+ERROR - 2016-10-04 16:12:55 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2016'
+GROUP BY `anio`
+ORDER BY `peri_id` desc' at line 4
+ERROR - 2016-10-04 16:16:03 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2016'
+AND `peri_estado` =  1
+GROUP BY `mes`
+ORDER BY `peri_id` desc' at line 3
+ERROR - 2016-10-04 16:17:10 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''\'2017\''
+AND `peri_estado` =  1
+GROUP BY `mes`
+ORDER BY `peri_id` desc' at line 3
+ERROR - 2016-10-04 16:17:36 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''\\\'2016\\\''
+AND `peri_estado` =  1
+GROUP BY `mes`
+ORDER BY `peri_id` desc' at line 3
+ERROR - 2016-10-04 16:17:58 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2017'
+AND `peri_estado` =  1
+GROUP BY `mes`
+ORDER BY `peri_id` desc' at line 3
+ERROR - 2016-10-04 16:18:02 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2016'
+AND `peri_estado` =  1
+GROUP BY `mes`
+ORDER BY `peri_id` desc' at line 3
+ERROR - 2016-10-04 16:19:36 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2017'
+AND `peri_estado` =  1
+GROUP BY `mes`
+ORDER BY `peri_id` desc' at line 3
+ERROR - 2016-10-04 16:19:41 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2016'
+AND `peri_estado` =  1
+GROUP BY `mes`
+ORDER BY `peri_id` desc' at line 3
+ERROR - 2016-10-04 16:20:34 --> Query error: Unknown column 'peri_id9' in 'order clause'
