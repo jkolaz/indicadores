@@ -36,7 +36,7 @@ class Reporte extends CI_Controller{
         $options = '<option value="all">TODOS</option>';
         if($objeto){
             foreach($objeto as $valor){
-                $options .= '<option value="'.$valor->anio.'-'.$valor->mes.'">'.$valor->mes_text.'-'.$valor->anio.'</option>';
+                $options .= '<option value="'.$valor->mes.'">'.$valor->mes_text.'-'.$valor->anio.'</option>';
             }
         }
         echo json_encode(array(
@@ -46,25 +46,24 @@ class Reporte extends CI_Controller{
     }
     
     public function getDataAjax(){
-        $this->load->model('configuracion/sede_model', 'sede');
         $this->load->model('reporte/periodo_model', 'periodo');
-        //$anio = $this->input->post('anio');
-        $anio = 2016;
+        $anio = $this->input->post('anio');
+        $mes = $this->input->post('mes');
+        //$anio = 2016;
         
-        $where['sed_estado'] = 1;
-        $objSede = $this->sede->getAllSede($where);
-        imprimir($objSede);
-        
-        $objeto = $this->periodo->getDataReporte($anio);
-        imprimir($objeto);
+        $where['peri_estado'] = 1;
+        $objeto = $this->periodo->getDatebyGrupo($where, '', $anio);
         
         $data = array();
-        if($objSede){
-            foreach($objSede as $valor){
-                $sede['sede'] = $valor->sed_nombre;
-                $data[] = $sede;
-            }
+        foreach ($objeto as $value){
+            $registro['name'] = $value->mes_text.' '.$value->anio;
+            $registro['sede'] = $this->periodo->getDataReporte($anio, $value->mes);
+            
+            $data[] = $registro;
         }
-        imprimir($data);
+        echo json_encode(array(
+            'respuesta'=>1,
+            'datos'=>$data
+        ));
     }
 }

@@ -105,23 +105,28 @@ class Periodo_model extends CI_Model{
         return NULL;
     }
     
-    public function getDataReporte($anio){
-        $sql = "select 
+    public function getDataReporte($anio, $mes){
+        $sql = "select
                     gc_sede.sed_id,
                     gc_sede.sed_nombre,
-                    date_format(ind_periodo.peri_fecha, '%m') as mes,
-                    date_format(ind_periodo.peri_fecha, '%b') as mes_text,
-                    count(ind_consulta_externa.ce_id) as cantidad
+                    (
+                        select 
+                            count(ind_consulta_externa.ce_id)
+                        from 
+                            ind_consulta_externa
+                                inner join 
+                            ind_periodo on ind_periodo.peri_id=ind_consulta_externa.ce_peri_id
+                        where
+                            ind_consulta_externa.ce_sed_id = gc_sede.sed_id
+                                and ind_consulta_externa.ce_estado
+                                and date_format(ind_periodo.peri_fecha, '%Y') = '{$anio}'
+                                and date_format(ind_periodo.peri_fecha, '%m') = '{$mes}'
+                    ) as cantidad
                 from
-                    ind_consulta_externa
-                        inner join
-                    gc_sede ON gc_sede.sed_id = ind_consulta_externa.ce_sed_id
-                        inner join
-                    ind_periodo ON ind_periodo.peri_id = ind_consulta_externa.ce_peri_id
+                    gc_sede 
                 where
-                    ind_consulta_externa.ce_estado = 1
-                        and date_format(ind_periodo.peri_fecha, '%Y') = '{$anio}'
-                group by gc_sede.sed_id , date_format(ind_periodo.peri_fecha, '%m')";
+                    gc_sede.sed_estado = 1
+                order by gc_sede.sed_nombre";
         
         $query = $this->db->query($sql);
         if($query->num_rows > 0){

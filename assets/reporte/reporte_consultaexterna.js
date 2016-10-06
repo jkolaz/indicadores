@@ -16,85 +16,121 @@ function ajaxMes(){
             $('#txt_mes').attr('disabled', false);
             $('#btnReporte').attr('disabled', false);
             $.ajax({
-            type: "POST",
-            cache: false,
-            dataType: "json",
-            data:{anio:$(this).val()},
-            url: base_url+controlador+'ajaxMes.html',
-            success: function(json){
-                if (json.respuesta === 1){
-                    $('#txt_mes').html(json.options);
+                type: "POST",
+                cache: false,
+                dataType: "json",
+                data:{anio:$(this).val()},
+                url: base_url+controlador+'ajaxMes.html',
+                success: function(json){
+                    if (json.respuesta === 1){
+                        $('#txt_mes').html(json.options);
+                    }
                 }
-            }
-        });
+            });
         }
     });
 }
 
 function reporteGrafico(){
-    $('#container').highcharts({
-        chart: {
+    $.ajax({
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        data:{
+            anio:$('#txt_anio').val(),
+            mes:$('#txt_mes').val()
+        },
+        url: base_url+controlador+'getDataAjax.html',
+        success: function(json){
+            if (json.respuesta === 1){
+                var datos = json.datos;
+                var pre_sede = datos[0]['sede'];
+                var sede = new Array();
+                for(var i=0; i<pre_sede.length; i++){
+                    sede[i] = pre_sede[i].sed_nombre;
+                }
+                
+                var sedeData = new Array();
+                
+                for(var k=0; k<sede.length; k++){
+                    var sede_datos = new Array();
+                    sede_datos['name'] = sede[k];
+                    sede_datos['data'] = new Array();
+                    
+                    sedeData[k] = sede_datos;
+                    
+                    for(var l=0; l<datos.length; l++){
+                        for(var m=0; m<datos[l]['sede'].length; m++){
+                            if(sedeData[k]['name'] === datos[l]['sede'][m].sed_nombre){
+                                sedeData[k]['data'][sedeData[k]['data'].length] = datos[l]['sede'][m].cantidad;
+                            }
+                        }
+                    }
+                }
+                
+                var mes = new Array();
+                for(var j=0; j<datos.length; j++){
+                    mes[j] = datos[j]['name'];
+                }
+                
+                
+                $('#container').highcharts({
+                    chart: {
             type: 'column'
-        },
-        title: {
+                    },
+                    title: {
             text: 'Monthly Average Rainfall'
-        },
-        subtitle: {
-            text: 'Source: WorldClimate.com'
-        },
-        xAxis: {
+                    },
+                    subtitle: {
+                        text: 'Source: WorldClimate.com'
+                    },
+                    xAxis: {
             categories: [
                 'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
+                'Feb'
             ],
-            crosshair: true
-        },
-        yAxis: {
-            min: 0,
-            title: {
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
                 text: 'Rainfall (cm)'
-            }
-        },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
                 '<td style="padding:0"><b>{point.y:.1f} cm</b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
-        },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: 'Tokyo',
+                        data: [49.9, 71.5]
+
+                    }, {
+                        name: 'New York',
+                        data: [83.6, 78.8]
+
+                    }, {
+                        name: 'London',
+                        data: [48.9, 38.8]
+
+                    }, {
+                        name: 'Berlin',
+                        data: [42.4, 33.2]
+
+                    }]
+                });
             }
-        },
-        series: [{
-            name: 'Tokyo',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-        }, {
-            name: 'New York',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-        }, {
-            name: 'London',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-        }, {
-            name: 'Berlin',
-            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-
-        }]
+        }
     });
+    
 }
