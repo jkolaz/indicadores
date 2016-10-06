@@ -61,9 +61,36 @@ class Reporte extends CI_Controller{
             
             $data[] = $registro;
         }
+        $arregloSede = array();
+        foreach ($data[0]['sede'] as $sede){
+            $arregloSede[] = array($sede->sed_nombre);
+        }
+        $sedeData = array();
+        foreach ($arregloSede as $val){
+            $arregloCant = array();
+            foreach($data as $valor){
+                foreach($valor['sede'] as $sedCant){
+                    if($sedCant->sed_nombre == $val[0]){
+                        $arregloCant[] = $sedCant->cantidad;
+                    }
+                }
+            }
+            $sedeData[] = array(
+                                'name'=>$val,
+                                'data'=> $arregloCant
+                            );
+        }
+        $arregloMes = array();
+        foreach($data as $mes){
+            $arregloMes[] = array($mes['name']);
+        }
+        
         echo json_encode(array(
             'respuesta'=>1,
-            'datos'=>$data
+            'datos'=>$data,
+            'sede' => $arregloSede,
+            'mes'=>$arregloMes,
+            'serie'=>$sedeData
         ));
     }
 }

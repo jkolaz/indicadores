@@ -73,7 +73,7 @@ function reporteGrafico(){
                     mes[j] = datos[j]['name'];
                 }
                 
-                
+                console.log(json.serie);
                 $('#container').highcharts({
                     chart: {
             type: 'column'
@@ -85,10 +85,7 @@ function reporteGrafico(){
                         text: 'Source: WorldClimate.com'
                     },
                     xAxis: {
-            categories: [
-                'Jan',
-                'Feb'
-            ],
+            categories: json.mes,
                         crosshair: true
                     },
                     yAxis: {
@@ -111,23 +108,7 @@ function reporteGrafico(){
                             borderWidth: 0
                         }
                     },
-                    series: [{
-                        name: 'Tokyo',
-                        data: [49.9, 71.5]
-
-                    }, {
-                        name: 'New York',
-                        data: [83.6, 78.8]
-
-                    }, {
-                        name: 'London',
-                        data: [48.9, 38.8]
-
-                    }, {
-                        name: 'Berlin',
-                        data: [42.4, 33.2]
-
-                    }]
+                    series: json.serie
                 });
             }
         }
