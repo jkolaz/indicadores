@@ -44,8 +44,9 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label"><b>Especialidades</b></label>
                     <div class="col-sm-5">
-                        <select data-plugin-selectTwo id="txt_esp" name="txt_esp" class="form-control populate" disabled="" >
-                            <option value="">Seleccionar</option>
+                        <select data-plugin-selectTwo id="txt_esp" name="txt_esp" multiple="" class="form-control populate" disabled="" >
+                            <option value="23">Seleccionar</option>
+                            <option value="2">Seleccionar</option>
                         </select>
                     </div>
                 </div>
@@ -63,25 +64,18 @@
         <div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
     </div>
     <div class="panel-body">
-        <table class="table table-striped mb-none datatable-sinButtons" data-swf-path="assets/vendor/jquery-datatables/extras/TableTools/swf/copy_csv_xls_pdf.swf">
-            <thead>
-                <tr>
-                    <th>Archivo</th>
-                    <th>Tipo</th>
-                    <th>N° lineas leidas</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="gradeX">
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td class="actions">-</td>
-                    <td class="actions">-</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table mb-none">
+                <thead>
+                    <tr>
+                        <th>Especialidad</th>
+                        <th>N° de atenciones</th>
+                    </tr>
+                </thead>
+                <tbody id="bodyEspecialidad">
+
+                </tbody>
+            </table>
+        </div>
     </div>
 </section>

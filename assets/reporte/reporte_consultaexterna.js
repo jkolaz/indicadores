@@ -12,8 +12,12 @@ function ajaxMes(){
             $('#txt_mes').attr('disabled', true);
             $('#btnReporte').attr('disabled', true);
             $('#txt_mes').html('<option value="">Seleccionar<option>');
+            $('#txt_sede').html('<option value="">Seleccionar<option>');
+            $('#txt_esp').html('<option value="">Seleccionar<option>');
         }else{
             $('#txt_mes').attr('disabled', false);
+            $('#txt_sede').attr('disabled', false);
+            $('#txt_esp').attr('disabled', false);
             $('#btnReporte').attr('disabled', false);
             $.ajax({
                 type: "POST",
@@ -38,11 +42,22 @@ function reporteGrafico(){
         dataType: "json",
         data:{
             anio:$('#txt_anio').val(),
-            mes:$('#txt_mes').val()
+            mes:$('#txt_mes').val(),
+            sede: $('#txt_sede').val(),
+            esp: $('#txt_esp').val()
         },
         url: base_url+controlador+'getDataAjax.html',
         success: function(json){
             if (json.respuesta === 1){
+                var especialidades = json.especialidad;
+                
+                $.each(especialidades,function(i,fila){
+                    $("#bodyEspecialidad").append('<tr class="active">');
+                    $("#bodyEspecialidad").append("<td>"+fila.ce_especialidad+"</td>");
+                    $("#bodyEspecialidad").append("<td>"+fila.cantidad+"</td>");
+                    $("#bodyEspecialidad").append("</tr>");
+                });
+                
                 var datos = json.datos;
                 var pre_sede = datos[0]['sede'];
                 var sede = new Array();
@@ -73,7 +88,7 @@ function reporteGrafico(){
                     mes[j] = datos[j]['name'];
                 }
                 
-                console.log(json.serie);
+                //console.log(json.serie);
                 $('#container').highcharts({
                     chart: {
             type: 'column'

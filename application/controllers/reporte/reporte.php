@@ -49,6 +49,8 @@ class Reporte extends CI_Controller{
         $this->load->model('reporte/periodo_model', 'periodo');
         $anio = $this->input->post('anio');
         $mes = $this->input->post('mes');
+        $esp = $this->input->post('esp');
+        imprimir($esp);
         //$anio = 2016;
         
         $where['peri_estado'] = 1;
@@ -85,12 +87,15 @@ class Reporte extends CI_Controller{
             $arregloMes[] = array($mes['name']);
         }
         
+        $objEspecialidad = $this->periodo->getDataReporteEspecialidad($anio);
+        
         echo json_encode(array(
             'respuesta'=>1,
             'datos'=>$data,
             'sede' => $arregloSede,
             'mes'=>$arregloMes,
-            'serie'=>$sedeData
+            'serie'=>$sedeData,
+            'especialidad'=>$objEspecialidad
         ));
     }
 }
