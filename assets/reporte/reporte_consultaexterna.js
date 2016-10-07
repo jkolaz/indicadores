@@ -50,45 +50,19 @@ function reporteGrafico(){
         success: function(json){
             if (json.respuesta === 1){
                 var especialidades = json.especialidad;
-                
-                $.each(especialidades,function(i,fila){
-                    $("#bodyEspecialidad").append('<tr class="active">');
-                    $("#bodyEspecialidad").append("<td>"+fila.ce_especialidad+"</td>");
-                    $("#bodyEspecialidad").append("<td>"+fila.cantidad+"</td>");
-                    $("#bodyEspecialidad").append("</tr>");
-                });
-                
-                var datos = json.datos;
-                var pre_sede = datos[0]['sede'];
-                var sede = new Array();
-                for(var i=0; i<pre_sede.length; i++){
-                    sede[i] = pre_sede[i].sed_nombre;
+                if(especialidades.length > 0){
+                    $("#bodyEspecialidad").html('');
+                    $.each(especialidades,function(i,fila){
+                        $("#bodyEspecialidad").append('<tr class="active">');
+                        $("#bodyEspecialidad").append("<td>"+fila.ce_especialidad+"</td>");
+                        $("#bodyEspecialidad").append("<td>"+fila.cantidad+"</td>");
+                        $("#bodyEspecialidad").append("</tr>");
+                    });
+                }else{
+                    $("#bodyEspecialidad").html('<tr class="active"><td colspan="2">No se encontraron registros</td></tr>');
                 }
                 
-                var sedeData = new Array();
-                
-                for(var k=0; k<sede.length; k++){
-                    var sede_datos = new Array();
-                    sede_datos['name'] = sede[k];
-                    sede_datos['data'] = new Array();
-                    
-                    sedeData[k] = sede_datos;
-                    
-                    for(var l=0; l<datos.length; l++){
-                        for(var m=0; m<datos[l]['sede'].length; m++){
-                            if(sedeData[k]['name'] === datos[l]['sede'][m].sed_nombre){
-                                sedeData[k]['data'][sedeData[k]['data'].length] = datos[l]['sede'][m].cantidad;
-                            }
-                        }
-                    }
-                }
-                
-                var mes = new Array();
-                for(var j=0; j<datos.length; j++){
-                    mes[j] = datos[j]['name'];
-                }
-                
-                //console.log(json.serie);
+                                
                 $('#container').highcharts({
                     chart: {
             type: 'column'
@@ -97,7 +71,7 @@ function reporteGrafico(){
             text: 'Monthly Average Rainfall'
                     },
                     subtitle: {
-                        text: 'Source: WorldClimate.com'
+                        text: ''
                     },
                     xAxis: {
             categories: json.mes,
@@ -106,7 +80,7 @@ function reporteGrafico(){
                     yAxis: {
                         min: 0,
                         title: {
-                text: 'Rainfall (cm)'
+                text: 'Consultas'
                         }
                     },
                     tooltip: {

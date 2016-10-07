@@ -50,7 +50,6 @@ class Reporte extends CI_Controller{
         $anio = $this->input->post('anio');
         $mes = $this->input->post('mes');
         $esp = $this->input->post('esp');
-        imprimir($esp);
         //$anio = 2016;
         
         $where['peri_estado'] = 1;
@@ -77,12 +76,14 @@ class Reporte extends CI_Controller{
                     }
                 }
             }
+            $cant_tex = implode(',', $arregloCant);
+            eval("\$cant_tex = array($cant_tex);");
             $sedeData[] = array(
                                 'name'=>$val,
-                                'data'=> $arregloCant
+                                'data'=> $cant_tex
                             );
         }
-        $arregloMes = array();
+        $arregloMes = array(); 
         foreach($data as $mes){
             $arregloMes[] = array($mes['name']);
         }
