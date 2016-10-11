@@ -89,7 +89,7 @@ class Periodo_model extends CI_Model{
     }
     
     public function getDatebyGrupo($where = array(), $group_by = "mes", $anio = '', $mes = ''){
-        $order_by = 'peri_id desc';
+        $order_by = 'peri_id';
         if($anio != ''){
             $this->db->where("date_format(ind_periodo.peri_fecha, '%Y') = '$anio'");
         }

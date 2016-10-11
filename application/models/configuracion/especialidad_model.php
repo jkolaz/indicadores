@@ -69,4 +69,9 @@ class Especialidad_model extends CI_Model{
         }
         return $arreglo;
     }
+    
+    public function insert_batch($insert){
+        $this->db->insert_batch(self::$_table, $insert); 
+        return true;
+    }
 }

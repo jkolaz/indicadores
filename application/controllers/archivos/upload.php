@@ -121,23 +121,43 @@ class Upload extends CI_Controller{
                 $this->load->library('PHPExcel/Classes/PHPExcel.php');
                 $objPHPExcel = PHPExcel_IOFactory::load($archivo);
                 $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(NULL, NULL, TRUE, TRUE);
-                //$this->load->model('registro/paciente_model', 'paciente');
+                $this->load->model('configuracion/especialidad_model', 'especialidad');
                 $permit = TRUE;
                 $insert = array();
                 while($row < $limit && $permit == TRUE){
-                    $aRow = $allDataInSheet[$row];
-                    
-                    if(trim($aRow['A']) != ""){
-                        imprimir($aRow['A']);
+                    $data = array();
+                    if(isset($allDataInSheet[$row])){
+                        $aRow = $allDataInSheet[$row];
+                        if($aRow['A'] == 'ATENCIONES MÉDICAS'){
+                            $data['esp_root'] = 1;
+                        }else{
+                            $data['esp_root'] = 2;
+                        }
+                        $data['esp_descripcion'] = $aRow['B'];
+                        $insert[] = $data;
+                        $row++;
+                        
+                    }else{
+                        $permit = FALSE;
+                        $this->archivo->arc_estado = 2;
                     }
-//                    if($aRow['A']){
-//                        imprimir($aRow['A']);
-//                    }else{
-//                        
-//                    }
+                }
+                if(count($insert)>0){
+                    $this->archivo->arc_num_lines_read = $row-2;
+                    $this->especialidad->insert_batch($insert);
+                    if($this->archivo->update()){
+                        $this->session->set_userdata('message_id', 1);
+                        $this->session->set_userdata('message', 'MSG1');
+                        $this->writeLog("insertó  ".($row-2-$inicio)." especialidades(s).");
+                    }else{
+                        $this->session->set_userdata('message_id', 2);
+                        $this->session->set_userdata('message', 'ERR1');
+                    }
+                }else{
+                    $this->session->set_userdata('message_id', 2);
+                    $this->session->set_userdata('message', 'ERR1');
                 }
             }
-            exit;
             redirect('archivos/upload/index');
         }else{
             redirect('archivos/upload/index');
