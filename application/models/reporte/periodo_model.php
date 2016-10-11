@@ -88,10 +88,13 @@ class Periodo_model extends CI_Model{
         return NULL;
     }
     
-    public function getDatebyGrupo($where = array(), $group_by = "mes", $anio = ''){
+    public function getDatebyGrupo($where = array(), $group_by = "mes", $anio = '', $mes = ''){
         $order_by = 'peri_id desc';
         if($anio != ''){
             $this->db->where("date_format(ind_periodo.peri_fecha, '%Y') = '$anio'");
+        }
+        if($mes != ''){
+            $this->db->where("date_format(ind_periodo.peri_fecha, '%m') = '$mes'");
         }
         $query = $this->db->where($where)->order_by($order_by)
                     ->group_by($group_by, FALSE)
@@ -105,7 +108,16 @@ class Periodo_model extends CI_Model{
         return NULL;
     }
     
-    public function getDataReporte($anio, $mes){
+    public function getDataReporte($anio, $mes, $sede = 0, $esp = array()){
+        $where = '';
+        if($sede > 0){
+            $where .= " and gc_sede.sed_id = '{$sede}'";
+        }
+        $where_sub = '';
+        if(count($esp) > 0){
+            $where_sub .= " and ind_consulta_externa.ce_especialidad in ('";
+            $where_sub .= implode("','", $esp)."')";
+        }
         $sql = "select
                     gc_sede.sed_id,
                     gc_sede.sed_nombre,
@@ -121,11 +133,13 @@ class Periodo_model extends CI_Model{
                                 and ind_consulta_externa.ce_estado
                                 and date_format(ind_periodo.peri_fecha, '%Y') = '{$anio}'
                                 and date_format(ind_periodo.peri_fecha, '%m') = '{$mes}'
+                                {$where_sub}
                     ) as cantidad
                 from
                     gc_sede 
                 where
                     gc_sede.sed_estado = 1
+                    {$where}
                 order by gc_sede.sed_nombre";
         
         $query = $this->db->query($sql);
@@ -134,10 +148,18 @@ class Periodo_model extends CI_Model{
         }
         return NULL;
     }
-    public function getDataReporteEspecialidad($anio, $mes = ""){
+    public function getDataReporteEspecialidad($anio, $mes = "", $sede = 0, $esp = array()){
         $where = "";
+        
         if($mes != ""){
             $where .= "and date_format(ind_periodo.peri_fecha, '%m') = '{$mes}'";
+        }
+        if($sede > 0){
+            $where .= " and ind_consulta_externa.ce_sed_id = '{$sede}'";
+        }
+        if(count($esp) > 0){
+            $where .= " and ind_consulta_externa.ce_especialidad in ('";
+            $where .= implode("','", $esp)."')";
         }
         $sql = "select 
                     ind_consulta_externa.ce_especialidad,
@@ -148,11 +170,10 @@ class Periodo_model extends CI_Model{
                     ind_periodo ON ind_periodo.peri_id = ind_consulta_externa.ce_peri_id
                 where
                     ind_consulta_externa.ce_estado = 1
-                        and ind_consulta_externa.ce_sed_id =1
                         and date_format(ind_periodo.peri_fecha, '%Y') = '{$anio}'
                         {$where}
                 group by ind_consulta_externa.ce_especialidad";
-        
+//        imprimir($sql);
         $query = $this->db->query($sql);
         if($query->num_rows > 0){
             return $query->result();

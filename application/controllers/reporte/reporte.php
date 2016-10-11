@@ -18,12 +18,32 @@ class Reporte extends CI_Controller{
     }
     
     public function consultaexterna(){
+        $ta = $this->session->userdata('idRol');
+        $sede = $this->session->userdata('sede');
+        $this->load->model('configuracion/sede_model', 'sede');
+        $this->load->model('configuracion/especialidad_model', 'especialidad');
+        $objEspecialidad = $this->especialidad->getCBO();
+        
+        $objSede = NULL;
+        switch ($ta){
+            case 1:
+                $whereSede['sed_estado'] = 1;
+                $objSede = $this->sede->getSedeCBO($whereSede, $sede);
+                break;
+            default:
+               if($sede > 0){
+                    $whereSede['sede'] = $sede;
+                    $objSede = $this->sede->getSedeCBO($whereSede, $sede);
+                } 
+        }
         $this->load->model('registro/consultaexterna_model', 'ce');
         $this->load->model('reporte/periodo_model', 'periodo');
         $this->smartyci->assign('js_script', $this->_carpeta.'/'.$this->_class.'_'.$this->_method.'.js');
         $where['peri_estado'] = 1;
         $objeto = $this->periodo->getDatebyGrupo($where, 'anio');
         $this->smartyci->assign('objAnio', $objeto);
+        $this->smartyci->assign('objSedeCBO', $objSede);
+        $this->smartyci->assign('objEsp', $objEspecialidad);
         $this->smartyci->assign('hc', 1);
         $this->smartyci->show_page();
     }
@@ -33,7 +53,7 @@ class Reporte extends CI_Controller{
         $anio = $this->input->post('anio');
         $where["peri_estado"] = 1;
         $objeto = $this->periodo->getDatebyGrupo($where, 'mes', $anio);
-        $options = '<option value="all">TODOS</option>';
+        $options = '<option value="">TODOS</option>';
         if($objeto){
             foreach($objeto as $valor){
                 $options .= '<option value="'.$valor->mes.'">'.$valor->mes_text.'-'.$valor->anio.'</option>';
@@ -47,24 +67,49 @@ class Reporte extends CI_Controller{
     
     public function getDataAjax(){
         $this->load->model('reporte/periodo_model', 'periodo');
+        $this->load->model('configuracion/especialidad_model', 'especialidad');
         $anio = $this->input->post('anio');
         $mes = $this->input->post('mes');
         $esp = $this->input->post('esp');
+        $sede = $this->input->post('sede');
         //$anio = 2016;
         
+        $aEsp = array();
+        $TipoEsp = array(1, 2);
+        if(is_array($esp)){
+            foreach($esp as $value){
+                if(in_array($value, $TipoEsp)){
+                    $whereEsp['esp_estado'] = 1;
+                    $whereEsp['esp_root'] = $value;
+                    $objEsp = $this->especialidad->getAll($whereEsp, 'esp_descripcion');
+                    if($objEsp){
+                        foreach($objEsp as $descripcion){
+                            if(!in_array($descripcion->esp_descripcion, $esp)){
+                                $aEsp[] = $descripcion->esp_descripcion;
+                            }
+                        }
+                    }
+                }else{
+                    if($value != ""){
+                        $aEsp[] = $value;
+                    }
+                }
+            }
+        }
+        
         $where['peri_estado'] = 1;
-        $objeto = $this->periodo->getDatebyGrupo($where, '', $anio);
+        $objeto = $this->periodo->getDatebyGrupo($where, '', $anio, $mes);
         
         $data = array();
         foreach ($objeto as $value){
             $registro['name'] = $value->mes_text.' '.$value->anio;
-            $registro['sede'] = $this->periodo->getDataReporte($anio, $value->mes);
+            $registro['sede'] = $this->periodo->getDataReporte($anio, $value->mes, $sede, $aEsp);
             
             $data[] = $registro;
         }
         $arregloSede = array();
-        foreach ($data[0]['sede'] as $sede){
-            $arregloSede[] = array($sede->sed_nombre);
+        foreach ($data[0]['sede'] as $aSede){
+            $arregloSede[] = array($aSede->sed_nombre);
         }
         $sedeData = array();
         foreach ($arregloSede as $val){
@@ -84,11 +129,11 @@ class Reporte extends CI_Controller{
                             );
         }
         $arregloMes = array(); 
-        foreach($data as $mes){
-            $arregloMes[] = array($mes['name']);
+        foreach($data as $aMes){
+            $arregloMes[] = array($aMes['name']);
         }
         
-        $objEspecialidad = $this->periodo->getDataReporteEspecialidad($anio);
+        $objEspecialidad = $this->periodo->getDataReporteEspecialidad($anio, $mes, $sede, $aEsp);
         
         echo json_encode(array(
             'respuesta'=>1,

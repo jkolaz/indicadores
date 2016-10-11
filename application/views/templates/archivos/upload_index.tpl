@@ -5,14 +5,14 @@
     </header>
     <div class="panel-body">
         <div class="row">
-            <div class="col-sm-6">
+            <!--<div class="col-sm-6">
                 <div class="mb-md" id="nuevo">
                     <button id="addToTable" class="btn btn-primary">
                         Registro nuevo
                         <i class="fa fa-plus"></i>
                     </button>
                 </div>
-            </div>
+            </div>-->
             <div class="form-group">
                 <label class="col-sm-1 control-label"><b>Sede</b></label>
                 <div class="col-sm-3">

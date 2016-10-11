@@ -7,6 +7,7 @@ function procesar_archivo(id, tipo){
     switch(tipo){
         case 'cie10':
         case 'pac':
+        case 'esp':
             var url = base_url+controlador+'procesar/'+id+'/'+tipo+'.html';
             location.href = url;
             break;

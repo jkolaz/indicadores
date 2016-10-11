@@ -26,7 +26,7 @@ class Upload extends CI_Controller{
         $sede = $this->session->userdata('sede');
         $whereSede['sed_estado'] = 1;
         $objSede = NULL;
-        switch($ta == 1){
+        switch($ta){
             case 1:
                 $objSede = $this->sede->getSedeCBO($whereSede, $sede);
                 break;
@@ -101,8 +101,46 @@ class Upload extends CI_Controller{
             case 'pac':
                 $this->procesar_paciente($id);
                 break;
+            case 'esp':
+                $this->procesar_especialidad($id);
+                break;
             default :
                 redirect('archivos/upload/index');
+        }
+    }
+    
+    public function procesar_especialidad($id){
+        $this->archivo->getRow($id);
+        if($this->archivo->arc_id > 0){
+            
+            $archivo = PATH_GALLERY.$this->archivo->arc_nombre;
+            $row = $this->archivo->arc_num_lines_read+2;
+            $limit = $row+300;
+            $inicio = $this->archivo->arc_num_lines_read;
+            if(file_exists($archivo)){
+                $this->load->library('PHPExcel/Classes/PHPExcel.php');
+                $objPHPExcel = PHPExcel_IOFactory::load($archivo);
+                $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(NULL, NULL, TRUE, TRUE);
+                //$this->load->model('registro/paciente_model', 'paciente');
+                $permit = TRUE;
+                $insert = array();
+                while($row < $limit && $permit == TRUE){
+                    $aRow = $allDataInSheet[$row];
+                    
+                    if(trim($aRow['A']) != ""){
+                        imprimir($aRow['A']);
+                    }
+//                    if($aRow['A']){
+//                        imprimir($aRow['A']);
+//                    }else{
+//                        
+//                    }
+                }
+            }
+            exit;
+            redirect('archivos/upload/index');
+        }else{
+            redirect('archivos/upload/index');
         }
     }
     

@@ -25,7 +25,7 @@
                     <label class="col-sm-3 control-label"><b>Mes</b></label>
                     <div class="col-sm-9">
                         <select data-plugin-selectTwo id="txt_mes" name="txt_mes" class="form-control populate" disabled="" >
-                            <option value="">Seleccionar</option>
+                            <option value="0">Seleccionar</option>
                         </select>
                     </div>
                 </div>
@@ -36,6 +36,11 @@
                     <div class="col-sm-9">
                         <select data-plugin-selectTwo id="txt_sede" name="txt_sede" class="form-control populate" disabled="" >
                             <option value="">Seleccionar</option>
+                            {if $objSedeCBO|@count gt 0}
+                                {section name=i loop=$objSedeCBO}
+                            <option value="{$objSedeCBO[i]->sed_id}" {$objSedeCBO[i]->selected}>{$objSedeCBO[i]->sed_nombre}</option>
+                                {/section}
+                            {/if}
                         </select>
                     </div>
                 </div>
@@ -45,8 +50,25 @@
                     <label class="col-sm-3 control-label"><b>Especialidades</b></label>
                     <div class="col-sm-5">
                         <select data-plugin-selectTwo id="txt_esp" name="txt_esp" multiple="" class="form-control populate" disabled="" >
-                            <option value="23">Seleccionar</option>
-                            <option value="2">Seleccionar</option>
+                            <option value="">TODOS</option>
+                            <optgroup label="Tipos de especialidades">
+                                {if $objEsp|@count gt 0}
+                                    {section name=h loop=$objEsp}
+                                <option value="{$objEsp[h]->esp_id}">{$objEsp[h]->esp_descripcion}</option>
+                                    {/section}
+                                {/if}
+                            </optgroup>
+                            {if $objEsp|@count gt 0}
+                                {section name=j loop=$objEsp}
+                            <optgroup label="{$objEsp[j]->esp_descripcion}">
+                                    {if $objEsp[j]->especialidad|@count gt 0}
+                                        {section name=k loop=$objEsp[j]->especialidad}
+                                <option value="{$objEsp[j]->especialidad[k]->esp_descripcion}">{$objEsp[j]->especialidad[k]->esp_descripcion}</option>
+                                        {/section}
+                                    {/if}
+                            </optgroup>
+                                {/section}
+                            {/if}
                         </select>
                     </div>
                 </div>
