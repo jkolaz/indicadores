@@ -64,6 +64,10 @@ class Periodo_model extends CI_Model{
     
     public function getRow($id){
         $where[self::$_PK] = $id;
+        $this->getRowBYCols($where);
+    }
+    
+    public function getRowBYCols($where = array()){
         $query = $this->db->where($where)->get(self::$_table);
         if($query->num_rows > 0){
             $arreglo = $query->row();
@@ -181,4 +185,23 @@ class Periodo_model extends CI_Model{
         return array();
     }
     
+    public function updateAll($update, $where = array()){
+        $this->db->where($where)->update(self::$_table, $update);
+    }
+    
+    public function max($col = "", $where = array()){
+        if($col == ""){
+            $col = self::$_PK;
+        }
+        $query = $this->db->where($where)
+                    ->select_max($col, 'max')
+                    ->get(self::$_table);
+
+        if($query->num_rows > 0){
+            $row = $query->row();
+            return $row->max;
+        }
+        return NULL;
+        
+    }
 }

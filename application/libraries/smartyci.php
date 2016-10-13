@@ -187,6 +187,7 @@ class Smartyci extends Smarty{
                 "ERR4" => "Ocurrio un error al subir el archivo.",
                 "ERR5" => "Algo va mal.<strong>Usuario y/o contraseña</strong> incorrecto, intente nuevamente.",
                 "ERR6" => "Ingrese su <strong>Usuario y/o contraseña</strong> para poder acceder al sistema.",
+                "ERR7" => "<strong>No hay periodo activo</strong> para realizar la operación.",
                 "WRM1" => "El nombre del registro ya existe.",
                 "WRM2" => "El nombre de usuario ya existe.",
                 "WRM3" => "El DNI de usuario ya existe en nuestros registros, por favor ingrese otro."

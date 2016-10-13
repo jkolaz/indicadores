@@ -241,56 +241,71 @@ class Upload extends CI_Controller{
     
     public function procesar_ce($id, $sede){
         if($sede > 0){
-            $this->archivo->getRow($id);
-            if($this->archivo->arc_id > 0){
-                $archivo = PATH_GALLERY.$this->archivo->arc_nombre;
-                $row = $this->archivo->arc_num_lines_read+2;
-                $inicio = $this->archivo->arc_num_lines_read;
-                $limit = $row+300;
-                if(file_exists($archivo)){
-                    $this->load->library('PHPExcel/Classes/PHPExcel.php');
-                    $objPHPExcel = PHPExcel_IOFactory::load($archivo);
-                    $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(NULL, NULL, TRUE, TRUE);
-                    $permit = TRUE;
-                    $this->load->model('registro/consultaexterna_model', 'ce');
-                    $insert = array();
-                    while($row < $limit && $permit == TRUE){
-                        $aRow = $allDataInSheet[$row];
-                        if(trim($aRow['A']) != ''){
-                            $fecha =  explode('/', $aRow['E']);
-                            $data['ce_dni_paciente'] = $aRow['A'];
-                            $data['ce_edad_paciente'] = $aRow['B'];
-                            $data['ce_dni_profesional'] = $aRow['C'];
-                            $data['ce_especialidad'] = $aRow['D'];
-                            $data['ce_fecha_atencion'] = $fecha[2].'-'.$fecha[1].'-'.$fecha[0];
-                            $data['ce_cie_10_principal'] = $aRow['F'];
-                            $data['ce_aseguradora'] = $aRow['G'];
-                            $data['ce_sed_id'] = $sede;
-                            $insert[] = $data;
-                            $row++;
-                        }else{
-                            $permit = FALSE;
-                            $this->archivo->arc_estado = 2;
+            $this->load->model('reporte/periodo_model', 'periodo');
+            $where['peri_estado'] = 1;
+            $this->periodo->getRowBYCols($where);
+            if($this->periodo->peri_id > 0){
+                $this->load->model('configuracion/especialidad_model', 'especialidad');
+                $where_esp['esp_estado'] = 1;
+                $aEsp = $this->especialidad->getAllEspecialidadToArray($where_esp);
+                $this->archivo->getRow($id);
+                if($this->archivo->arc_id > 0){
+                    $archivo = PATH_GALLERY.$this->archivo->arc_nombre;
+                    $row = $this->archivo->arc_num_lines_read+2;
+                    $inicio = $this->archivo->arc_num_lines_read;
+                    $limit = $row+600;
+                    if(file_exists($archivo)){
+                        $this->load->library('PHPExcel/Classes/PHPExcel.php');
+                        $objPHPExcel = PHPExcel_IOFactory::load($archivo);
+                        $allDataInSheet = $objPHPExcel->getActiveSheet()->toArray(NULL, NULL, TRUE, TRUE);
+                        $permit = TRUE;
+                        $this->load->model('registro/consultaexterna_model', 'ce');
+                        $insert = array();
+                        while($row < $limit && $permit == TRUE){
+                            $aRow = $allDataInSheet[$row];
+                            if(trim($aRow['A']) != ''){
+                                $keyEsp = array_search($aRow['D'], $aEsp);
+                                $fecha =  explode('/', $aRow['E']);
+                                $data['ce_dni_paciente'] = $aRow['A'];
+                                $data['ce_edad_paciente'] = $aRow['B'];
+                                $data['ce_dni_profesional'] = $aRow['C'];
+                                $data['ce_especialidad'] = $aRow['D'];
+                                $data['ce_fecha_atencion'] = $fecha[2].'-'.$fecha[1].'-'.$fecha[0];
+                                $data['ce_cie_10_principal'] = $aRow['F'];
+                                $data['ce_aseguradora'] = $aRow['G'];
+                                $data['ce_sed_id'] = $sede;
+                                $data['ce_peri_id'] = $this->periodo->peri_id;
+                                $data['ce_esp_id'] = $keyEsp;
+                                $insert[] = $data;
+                                $row++;
+                            }else{
+                                $permit = FALSE;
+                                $this->archivo->arc_estado = 2;
+                            }
                         }
-                    }
-                    if(count($insert)>0){
-                        $this->ce->insert_batch($insert);
-                        $this->archivo->arc_num_lines_read = $row-2;
-                        if($this->archivo->update()){
-                            $this->session->set_userdata('message_id', 1);
-                            $this->session->set_userdata('message', 'MSG1');
-                            $this->writeLog("insertó  ".($row-2-$inicio)." registro(s) a Consulta externa");
+                        if(count($insert)>0){
+                            $this->ce->insert_batch($insert);
+                            $this->archivo->arc_num_lines_read = $row-2;
+                            if($this->archivo->update()){
+                                $this->session->set_userdata('message_id', 1);
+                                $this->session->set_userdata('message', 'MSG1');
+                                $this->writeLog("insertó  ".($row-2-$inicio)." registro(s) a Consulta externa");
+                            }else{
+                                $this->session->set_userdata('message_id', 2);
+                                $this->session->set_userdata('message', 'ERR1');
+                            }
                         }else{
                             $this->session->set_userdata('message_id', 2);
                             $this->session->set_userdata('message', 'ERR1');
                         }
-                    }else{
-                        $this->session->set_userdata('message_id', 2);
-                        $this->session->set_userdata('message', 'ERR1');
                     }
+                    redirect('archivos/upload/index');
+                }else{
+                    redirect('archivos/upload/index');
                 }
-                redirect('archivos/upload/index');
             }else{
+                $this->session->set_userdata('message_id', 2);
+                $this->session->set_userdata('message', 'ERR7');
                 redirect('archivos/upload/index');
             }
         }else{

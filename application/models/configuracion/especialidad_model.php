@@ -74,4 +74,15 @@ class Especialidad_model extends CI_Model{
         $this->db->insert_batch(self::$_table, $insert); 
         return true;
     }
+    
+    public function getAllEspecialidadToArray($where){
+        $arreglo = array();
+        $objeto = $this->getAll($where);
+        if($objeto){
+            foreach($objeto as $value){
+                $arreglo[$value->esp_id] = $value->esp_descripcion;
+            }
+        }
+        return $arreglo;
+    }
 }
