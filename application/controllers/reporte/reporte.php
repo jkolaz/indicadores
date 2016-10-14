@@ -84,7 +84,7 @@ class Reporte extends CI_Controller{
     public function ajaxMes(){
         $this->load->model('reporte/periodo_model', 'periodo');
         $anio = $this->input->post('anio');
-        $where["peri_estado"] = 1;
+        $where = array();
         $objeto = $this->periodo->getDatebyGrupo($where, 'mes', $anio);
         $options = '<option value="">TODOS</option>';
         if($objeto){
@@ -130,7 +130,7 @@ class Reporte extends CI_Controller{
             }
         }
         
-        $where['peri_estado'] = 1;
+        $where = array();
         $objeto = $this->periodo->getDatebyGrupo($where, '', $anio, $mes);
         
         $data = array();
