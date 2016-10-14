@@ -45,6 +45,39 @@ class Reporte extends CI_Controller{
         $this->smartyci->assign('objSedeCBO', $objSede);
         $this->smartyci->assign('objEsp', $objEspecialidad);
         $this->smartyci->assign('hc', 1);
+        $this->smartyci->assign('listado', 'Reporte de consulta externa por especialidades');
+        $this->smartyci->show_page();
+    }
+    
+    public function cie10(){
+        $ta = $this->session->userdata('idRol');
+        $sede = $this->session->userdata('sede');
+        $this->load->model('configuracion/sede_model', 'sede');
+        $this->load->model('configuracion/especialidad_model', 'especialidad');
+        $objEspecialidad = $this->especialidad->getCBO();
+        
+        $objSede = NULL;
+        switch ($ta){
+            case 1:
+                $whereSede['sed_estado'] = 1;
+                $objSede = $this->sede->getSedeCBO($whereSede, $sede);
+                break;
+            default:
+               if($sede > 0){
+                    $whereSede['sede'] = $sede;
+                    $objSede = $this->sede->getSedeCBO($whereSede, $sede);
+                } 
+        }
+        $this->load->model('registro/consultaexterna_model', 'ce');
+        $this->load->model('reporte/periodo_model', 'periodo');
+        $this->smartyci->assign('js_script', $this->_carpeta.'/'.$this->_class.'_'.$this->_method.'.js');
+        $where['peri_estado'] = 1;
+        $objeto = $this->periodo->getDatebyGrupo($where, 'anio');
+        $this->smartyci->assign('objAnio', $objeto);
+        $this->smartyci->assign('objSedeCBO', $objSede);
+        $this->smartyci->assign('objEsp', $objEspecialidad);
+        $this->smartyci->assign('hc', 1);
+        $this->smartyci->assign('listado', 'Reporte de consulta externa por diagnosticos');
         $this->smartyci->show_page();
     }
     
@@ -134,6 +167,10 @@ class Reporte extends CI_Controller{
         }
         
         $objEspecialidad = $this->periodo->getDataReporteEspecialidad($anio, $mes, $sede, $aEsp);
+        $sumTotal = 0;
+        foreach($objEspecialidad as $row){
+            $sumTotal += $row->cantidad;
+        }
         
         echo json_encode(array(
             'respuesta'=>1,
@@ -141,7 +178,8 @@ class Reporte extends CI_Controller{
             'sede' => $arregloSede,
             'mes'=>$arregloMes,
             'serie'=>$sedeData,
-            'especialidad'=>$objEspecialidad
+            'especialidad'=>$objEspecialidad,
+            'total' => $sumTotal
         ));
     }
 }
