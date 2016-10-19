@@ -93,6 +93,7 @@
                         <th>Especialidad</th>
                         <th>N° de atenciones</th>
                         <th>(%)</th>
+                        <th>N° de pac. atendidos</th>
                     </tr>
                 </thead>
                 <tbody id="bodyEspecialidad">

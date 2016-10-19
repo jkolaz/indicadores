@@ -167,7 +167,8 @@ class Periodo_model extends CI_Model{
         }
         $sql = "select 
                     ind_consulta_externa.ce_especialidad,
-                    count(ind_consulta_externa.ce_id) as cantidad
+                    count(ind_consulta_externa.ce_id) as cantidad,
+                    count(distinct ind_consulta_externa.ce_dni_paciente) as pacientes
                 from
                     ind_consulta_externa
                         inner join
@@ -176,7 +177,8 @@ class Periodo_model extends CI_Model{
                     ind_consulta_externa.ce_estado = 1
                         and date_format(ind_periodo.peri_fecha, '%Y') = '{$anio}'
                         {$where}
-                group by ind_consulta_externa.ce_especialidad";
+                group by ind_consulta_externa.ce_especialidad 
+                order by cantidad desc";
 //        imprimir($sql);
         $query = $this->db->query($sql);
         if($query->num_rows > 0){

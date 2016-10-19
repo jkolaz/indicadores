@@ -68,6 +68,7 @@ function reporteGrafico(){
                         $("#bodyEspecialidad").append("<td>"+fila.ce_especialidad+"</td>");
                         $("#bodyEspecialidad").append("<td>"+fila.cantidad+"</td>");
                         $("#bodyEspecialidad").append("<td>"+porc+"%</td>");
+                        $("#bodyEspecialidad").append("<td>"+fila.pacientes+"</td>");
                         $("#bodyEspecialidad").append("</tr>");
                     });
                 }else{
