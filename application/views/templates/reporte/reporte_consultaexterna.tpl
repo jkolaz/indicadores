@@ -99,6 +99,14 @@
                 <tbody id="bodyEspecialidad">
 
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th id="tAtenciones">0</th>
+                        <th id="tPorc">0%</th>
+                        <th id="tPac">0</th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>

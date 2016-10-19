@@ -59,10 +59,14 @@ function reporteGrafico(){
                 var especialidades = json.especialidad;
                 if(especialidades.length > 0){
                     $("#bodyEspecialidad").html('');
+                    var totalAtenciones = 0;
+                    var totalPorc = 0;
+                    var totalPacientes = 0;
                     $.each(especialidades,function(i,fila){
                         var porc = 0;
+                        var pre_porc = (fila.cantidad/json.total)*100;
                         if(json.total > 0){
-                            porc = Math.round10((fila.cantidad/json.total)*100, -1);
+                            porc = Math.round10(pre_porc, -1);
                         }
                         $("#bodyEspecialidad").append('<tr class="active">');
                         $("#bodyEspecialidad").append("<td>"+fila.ce_especialidad+"</td>");
@@ -70,7 +74,14 @@ function reporteGrafico(){
                         $("#bodyEspecialidad").append("<td>"+porc+"%</td>");
                         $("#bodyEspecialidad").append("<td>"+fila.pacientes+"</td>");
                         $("#bodyEspecialidad").append("</tr>");
+                        
+                        totalAtenciones = totalAtenciones+parseInt(fila.cantidad);
+                        totalPorc = totalPorc+parseFloat(pre_porc);
+                        totalPacientes = totalPacientes+parseInt(fila.pacientes);
                     });
+                    $('#tAtenciones').text(totalAtenciones);
+                    $('#tPorc').text(Math.round10(totalPorc)+'%');
+                    $('#tPac').text(totalPacientes);
                 }else{
                     $("#bodyEspecialidad").html('<tr class="active"><td colspan="3">No se encontraron registros</td></tr>');
                 }
