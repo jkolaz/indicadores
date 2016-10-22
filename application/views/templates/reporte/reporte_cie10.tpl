@@ -8,9 +8,9 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="col-sm-3 control-label"><b>Año</b></label>
-                    <div class="col-sm-9">
-                        <select data-plugin-selectTwo id="txt_anio" name="txt_anio" class="form-control populate">
-                            <option value="">Seleccionar</option>
+                    <div class="col-sm-12">
+                        <select data-plugin-selectTwo id="txt_anio" name="txt_anio" class="form-control populate" multiple="">
+                            <option value="all">TODOS</option>
                             {if $objAnio|@count gt 0}
                                 {section name=i loop=$objAnio}
                             <option value="{$objAnio[i]->anio}">{$objAnio[i]->anio}</option>
@@ -48,7 +48,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="col-sm-3 control-label"><b>Especialidades</b></label>
-                    <div class="col-sm-5">
+                    <div class="col-sm-12">
                         <select data-plugin-selectTwo id="txt_esp" name="txt_esp" multiple="" class="form-control populate" disabled="" >
                             <option value="">TODOS</option>
                             <optgroup label="Tipos de especialidades">

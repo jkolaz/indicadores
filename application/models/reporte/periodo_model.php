@@ -111,6 +111,27 @@ class Periodo_model extends CI_Model{
         }
         return NULL;
     }
+    public function getDatebyGrupo1($where = array(), $group_by = "mes", $anio = array(), $mes = ''){
+        $order_by = 'peri_id';
+        if(count($anio) > 0){
+            if(!in_array("all", $anio)){
+                $this->db->where_in("date_format(ind_periodo.peri_fecha, '%Y')",$anio);
+            }
+        }
+        if($mes != ''){
+            $this->db->where("date_format(ind_periodo.peri_fecha, '%m') = '$mes'");
+        }
+        $query = $this->db->where($where)->order_by($order_by)
+                    ->group_by($group_by, FALSE)
+                    ->select("date_format(ind_periodo.peri_fecha, '%m') as 'mes'", FALSE)
+                    ->select("date_format(ind_periodo.peri_fecha, '%b') as 'mes_text'", FALSE)
+                    ->select("date_format(ind_periodo.peri_fecha, '%Y') as 'anio'", FALSE)
+                    ->get(self::$_table);
+        if($query->num_rows > 0){
+            return $query->result();
+        }
+        return NULL;
+    }
     
     public function getDataReporte($anio, $mes, $sede = 0, $esp = array()){
         $where = '';

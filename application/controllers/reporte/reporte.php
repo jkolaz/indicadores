@@ -71,7 +71,7 @@ class Reporte extends CI_Controller{
         $this->load->model('registro/consultaexterna_model', 'ce');
         $this->load->model('reporte/periodo_model', 'periodo');
         $this->smartyci->assign('js_script', $this->_carpeta.'/'.$this->_class.'_'.$this->_method.'.js');
-        $where['peri_estado'] = 1;
+        $where['peri_estado != '] = 2;
         $objeto = $this->periodo->getDatebyGrupo($where, 'anio');
         $this->smartyci->assign('objAnio', $objeto);
         $this->smartyci->assign('objSedeCBO', $objSede);
@@ -84,8 +84,13 @@ class Reporte extends CI_Controller{
     public function ajaxMes(){
         $this->load->model('reporte/periodo_model', 'periodo');
         $anio = $this->input->post('anio');
+        $type = $this->input->post('type');
         $where = array();
-        $objeto = $this->periodo->getDatebyGrupo($where, 'mes', $anio);
+        if($type == 1){
+            $objeto = $this->periodo->getDatebyGrupo($where, 'mes', $anio);
+        }else{
+            $objeto = $this->periodo->getDatebyGrupo1($where, 'mes', $anio);
+        }
         $options = '<option value="">TODOS</option>';
         if($objeto){
             foreach($objeto as $valor){

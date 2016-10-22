@@ -2,7 +2,7 @@ var controlador = 'reporte/reporte/';
 jQuery(document).ready( function() {
     ajaxMes();
     $('#btnReporte').click(function (){
-        reporteGrafico();
+        //reporteGrafico();
     });
     
     if(!Math.round10){
@@ -32,7 +32,7 @@ function ajaxMes(){
                 dataType: "json",
                 data:{
                     anio:$(this).val(),
-                    type: 1
+                    type: 2
                 },
                 url: base_url+controlador+'ajaxMes.html',
                 success: function(json){
