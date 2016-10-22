@@ -133,6 +133,27 @@ class Periodo_model extends CI_Model{
         return NULL;
     }
     
+    public function getAnio($anio = array()){
+        $order_by = "anio";
+        $arreglo = array();
+        if(count($anio) > 0){
+            if(!in_array("all", $anio)){
+                $this->db->where_in("date_format(ind_periodo.peri_fecha, '%Y')",$anio);
+            }
+        }
+        $query = $this->db->order_by($order_by)
+                    ->group_by('anio', FALSE)
+                    ->select("date_format(ind_periodo.peri_fecha, '%Y') as 'anio'", FALSE)
+                    ->get(self::$_table);
+        if($query->num_rows > 0){
+            $result = $query->result();
+            foreach($result as $valor){
+                $arreglo[] = $valor->anio;
+            }
+        }
+        return $arreglo;
+    }
+    
     public function getDataReporte($anio, $mes, $sede = 0, $esp = array()){
         $where = '';
         if($sede > 0){
@@ -173,11 +194,12 @@ class Periodo_model extends CI_Model{
         }
         return NULL;
     }
-    public function getDataReporteEspecialidad($anio, $mes = "", $sede = 0, $esp = array()){
+    public function getCie10($anio, $sede = 0, $esp = array()){
         $where = "";
-        
-        if($mes != ""){
-            $where .= "and date_format(ind_periodo.peri_fecha, '%m') = '{$mes}'";
+        if(count($anio) > 0){
+            if(!in_array("all", $anio)){
+                $where .= "and date_format(ind_periodo.peri_fecha, '%Y') in ('".  implode("', '",$anio). "')";
+            }
         }
         if($sede > 0){
             $where .= " and ind_consulta_externa.ce_sed_id = '{$sede}'";
@@ -187,20 +209,52 @@ class Periodo_model extends CI_Model{
             $where .= implode("','", $esp)."')";
         }
         $sql = "select 
-                    ind_consulta_externa.ce_especialidad,
-                    count(ind_consulta_externa.ce_id) as cantidad,
-                    count(distinct ind_consulta_externa.ce_dni_paciente) as pacientes
-                from
-                    ind_consulta_externa
-                        inner join
-                    ind_periodo ON ind_periodo.peri_id = ind_consulta_externa.ce_peri_id
-                where
-                    ind_consulta_externa.ce_estado = 1
-                        and date_format(ind_periodo.peri_fecha, '%Y') = '{$anio}'
-                        {$where}
-                group by ind_consulta_externa.ce_especialidad 
-                order by cantidad desc";
-//        imprimir($sql);
+                    ind_consulta_externa.ce_cie_10_principal,
+                    ind_cie10.cie_detalle,
+                    count(ind_consulta_externa.ce_id) as cantidad
+                from ind_consulta_externa 
+                    inner join
+                ind_periodo ON ind_periodo.peri_id = ind_consulta_externa.ce_peri_id
+                    inner join
+                ind_cie10 ON ind_cie10.cie_codigo = ind_consulta_externa.ce_cie_10_principal
+                where 
+                    ind_consulta_externa.ce_estado = 1 
+                    {$where}
+                group by ind_consulta_externa.ce_cie_10_principal 
+                order by cantidad desc limit 10 ";
+        $query = $this->db->query($sql);
+        if($query->num_rows > 0){
+            return $query->result();
+        }
+        return array();
+    }
+    
+    public function getCie10ByAnio ($anio, $acie10, $sede = 0, $esp = array()){
+        $where = "and date_format(ind_periodo.peri_fecha, '%Y') = '". $anio. "'";
+        if($sede > 0){
+            $where .= " and ind_consulta_externa.ce_sed_id = '{$sede}'";
+        }
+        if(count($acie10) > 0){
+            $where .= " and ind_consulta_externa.ce_cie_10_principal IN ('".  implode("', '", $acie10)."')";
+        }
+        if(count($esp) > 0){
+            $where .= " and ind_consulta_externa.ce_especialidad in ('";
+            $where .= implode("','", $esp)."')";
+        }
+        $sql = "select 
+                    ind_consulta_externa.ce_cie_10_principal,
+                    ind_cie10.cie_detalle,
+                    count(ind_consulta_externa.ce_id) as cantidad
+                from ind_consulta_externa 
+                    inner join
+                ind_periodo ON ind_periodo.peri_id = ind_consulta_externa.ce_peri_id
+                    inner join
+                ind_cie10 ON ind_cie10.cie_codigo = ind_consulta_externa.ce_cie_10_principal
+                where 
+                    ind_consulta_externa.ce_estado = 1 
+                    {$where}
+                group by ind_consulta_externa.ce_cie_10_principal 
+                order by cantidad desc limit 10 ";
         $query = $this->db->query($sql);
         if($query->num_rows > 0){
             return $query->result();
@@ -226,5 +280,54 @@ class Periodo_model extends CI_Model{
         }
         return NULL;
         
+    }
+    
+    
+    public function getDataReporteCie10($anio, $sede = 0, $esp = array()){
+        $where = '';
+        $where_sub = '';
+        
+        if(count($anio) > 0){
+            if(!in_array("all", $anio)){
+                $where_sub .= " and date_format(ind_periodo.peri_fecha, '%Y') in ('";
+                $where_sub .= implode("', '", $anio)." ')";
+            }
+        }
+        if($sede > 0){
+            $where .= " and gc_sede.sed_id = '{$sede}'";
+        }
+        
+        if(count($esp) > 0){
+            $where_sub .= " and ind_consulta_externa.ce_especialidad in ('";
+            $where_sub .= implode("','", $esp)."')";
+        }
+        
+        $sql = "select
+                    gc_sede.sed_id,
+                    gc_sede.sed_nombre,
+                    (
+                        select 
+                            count(ind_consulta_externa.ce_id)
+                        from 
+                            ind_consulta_externa
+                                inner join 
+                            ind_periodo on ind_periodo.peri_id=ind_consulta_externa.ce_peri_id
+                        where
+                            ind_consulta_externa.ce_sed_id = gc_sede.sed_id
+                                and ind_consulta_externa.ce_estado
+                                {$where_sub}
+                    ) as cantidad
+                from
+                    gc_sede 
+                where
+                    gc_sede.sed_estado = 1
+                    {$where}
+                order by gc_sede.sed_nombre";
+        
+        $query = $this->db->query($sql);
+        if($query->num_rows > 0){
+            return $query->result();
+        }
+        return NULL;
     }
 }

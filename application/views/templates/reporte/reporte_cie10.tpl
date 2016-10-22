@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <!--<div class="col-md-2">
                 <div class="form-group">
                     <label class="col-sm-3 control-label"><b>Mes</b></label>
                     <div class="col-sm-9">
@@ -29,7 +29,7 @@
                         </select>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="col-sm-3 control-label"><b>Sede</b></label>

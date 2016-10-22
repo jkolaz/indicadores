@@ -187,4 +187,87 @@ class Reporte extends CI_Controller{
             'total' => $sumTotal
         ));
     }
+    
+    public function getDataAjaxCie10(){
+        $this->load->model('reporte/periodo_model', 'periodo');
+        $this->load->model('configuracion/especialidad_model', 'especialidad');
+        $anio = $this->input->post('anio');
+        //$mes = $this->input->post('mes');
+        $esp = $this->input->post('esp');
+        $sede = $this->input->post('sede');
+        
+        $aEsp = array();
+        $TipoEsp = array(1, 2);
+        if(is_array($esp)){
+            foreach($esp as $value){
+                if(in_array($value, $TipoEsp)){
+                    $whereEsp['esp_estado'] = 1;
+                    $whereEsp['esp_root'] = $value;
+                    $objEsp = $this->especialidad->getAll($whereEsp, 'esp_descripcion');
+                    if($objEsp){
+                        foreach($objEsp as $descripcion){
+                            if(!in_array($descripcion->esp_descripcion, $esp)){
+                                $aEsp[] = $descripcion->esp_descripcion;
+                            }
+                        }
+                    }
+                }else{
+                    if($value != ""){
+                        $aEsp[] = $value;
+                    }
+                }
+            }
+        }
+        
+        $objAnio = $this->periodo->getAnio($anio);
+        
+        $aCie10 = array();
+        $aCie10Id = array();
+        $objCie10 = $this->periodo->getCie10($anio, $sede, $aEsp);
+        if($objCie10){
+            foreach ($objCie10 as $vCie10){
+                $aCie10[] = array($vCie10->ce_cie_10_principal);
+                $aCie10Id[] = $vCie10->ce_cie_10_principal;
+            }
+        }
+        
+        $serie = array();
+        if(count($objAnio) > 0){
+            foreach($objAnio as $rAnio){
+                $objCie10Anio = $this->periodo->getCie10ByAnio($rAnio, $aCie10Id, $sede, $aEsp);
+                $permit = false;
+                if($objCie10Anio){
+                    $permit = true;
+                }
+                $arregloData = array();
+                foreach ($aCie10Id as $rCie10){
+                    if($permit){
+                        $vCantidad = 0;
+                        foreach($objCie10Anio as $rCA){
+                            if($rCie10 == $rCA->ce_cie_10_principal){
+                                $vCantidad = $rCA->cantidad;
+                                break;
+                            }
+                        }
+                        $arregloData[] = $vCantidad;
+                    }else{
+                        $arregloData[] = 0;
+                    }
+                }
+                $cant_tex = implode(',', $arregloData);
+                eval("\$cant_tex = array($cant_tex);");
+                
+                $serie[] = array(
+                                'name' => 'Año '.$rAnio,
+                                'data'=> $cant_tex
+                            );
+            }
+        }
+        
+        echo json_encode(array(
+            'respuesta'=>1,
+            'serie' => $serie,
+            'diagnostico'=>$aCie10,
+        ));
+    }
 }
