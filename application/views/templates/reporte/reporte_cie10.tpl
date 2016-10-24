@@ -86,19 +86,37 @@
         <div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
     </div>
     <div class="panel-body">
-        <div class="table-responsive">
-            <table class="table mb-none">
-                <thead>
-                    <tr>
-                        <th>Especialidad</th>
-                        <th>N° de atenciones</th>
-                        <th>(%)</th>
-                    </tr>
-                </thead>
-                <tbody id="bodyEspecialidad">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="table-responsive">
+                    <table class="table mb-none">
+                        <thead>
+                            <tr>
+                                <th>Diagnostico</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bodyDiagnostico">
 
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="table-responsive">
+                    <table class="table mb-none">
+                        <thead>
+                            <tr>
+                                <th>Especialidad</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bodyEspecialidad">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </section>

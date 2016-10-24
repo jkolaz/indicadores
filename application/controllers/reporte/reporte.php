@@ -268,6 +268,7 @@ class Reporte extends CI_Controller{
             'respuesta'=>1,
             'serie' => $serie,
             'diagnostico'=>$aCie10,
+            'diagnosticoTotal'=>$objCie10,
         ));
     }
 }

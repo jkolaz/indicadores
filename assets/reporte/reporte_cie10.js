@@ -60,7 +60,15 @@ function reporteGrafico(){
         success: function(json){
             if (json.respuesta === 1){
                 
-                                
+                var diagnostico = json.diagnosticoTotal;
+                if(diagnostico.length > 0){
+                    $.each(diagnostico,function(i,fila){
+                        $("#bodyDiagnostico").append('<tr class="active">');
+                        $("#bodyDiagnostico").append('<td><a href="javascript:;" onclick="diagnostico()">'+fila.ce_cie_10_principal+"</a></td>");
+                        $("#bodyDiagnostico").append("<td>"+fila.cantidad+"</td>");
+                        $("#bodyDiagnostico").append("</tr>");
+                    });
+                }
                 $('#container').highcharts({
                     chart: {
                         type: 'bar'
@@ -135,4 +143,11 @@ function decimalAdjust(type, value, exp){
 
     value = value.toString().split('e');
     return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+}
+
+function diagnostico(){
+    var anio = $('#txt_anio').val();
+    var sede = $('#txt_sede').val();
+    var esp = $('#txt_esp').val();
+    
 }
