@@ -330,4 +330,39 @@ class Periodo_model extends CI_Model{
         }
         return NULL;
     }
+    
+    public function getDataReporteEspecialidad($anio, $mes = "", $sede = 0, $esp = array()){
+        $where = "";
+        
+        if($mes != ""){
+            $where .= "and date_format(ind_periodo.peri_fecha, '%m') = '{$mes}'";
+        }
+        if($sede > 0){
+            $where .= " and ind_consulta_externa.ce_sed_id = '{$sede}'";
+        }
+        if(count($esp) > 0){
+            $where .= " and ind_consulta_externa.ce_especialidad in ('";
+            $where .= implode("','", $esp)."')";
+        }
+        $sql = "select 
+                    ind_consulta_externa.ce_especialidad,
+                    count(ind_consulta_externa.ce_id) as cantidad,
+                    count(distinct ind_consulta_externa.ce_dni_paciente) as pacientes
+                from
+                    ind_consulta_externa
+                        inner join
+                    ind_periodo ON ind_periodo.peri_id = ind_consulta_externa.ce_peri_id
+                where
+                    ind_consulta_externa.ce_estado = 1
+                        and date_format(ind_periodo.peri_fecha, '%Y') = '{$anio}'
+                        {$where}
+                group by ind_consulta_externa.ce_especialidad 
+                order by cantidad desc";
+//        imprimir($sql);
+        $query = $this->db->query($sql);
+        if($query->num_rows > 0){
+            return $query->result();
+        }
+        return array();
+    }
 }
