@@ -271,4 +271,46 @@ class Reporte extends CI_Controller{
             'diagnosticoTotal'=>$objCie10,
         ));
     }
+    
+    public function especialidadByDiagnostico(){
+        $this->load->model('reporte/periodo_model', 'periodo');
+        $this->load->model('configuracion/especialidad_model', 'especialidad');
+        
+        $diagnostico = $this->input->post('diagnostico');
+        $anio = $this->input->post('anio');
+        $sede = $this->input->post('sede');
+        $esp = $this->input->post('esp');
+        
+        $aEsp = array();
+        $TipoEsp = array(1, 2);
+        if(is_array($esp)){
+            foreach($esp as $value){
+                if(in_array($value, $TipoEsp)){
+                    $whereEsp['esp_estado'] = 1;
+                    $whereEsp['esp_root'] = $value;
+                    $objEsp = $this->especialidad->getAll($whereEsp, 'esp_descripcion');
+                    if($objEsp){
+                        foreach($objEsp as $descripcion){
+                            if(!in_array($descripcion->esp_descripcion, $esp)){
+                                $aEsp[] = $descripcion->esp_descripcion;
+                            }
+                        }
+                    }
+                }else{
+                    if($value != ""){
+                        $aEsp[] = $value;
+                    }
+                }
+            }
+        }
+        
+        $objeto = $this->periodo->especialidadByDiagnostico($diagnostico, $anio, $sede, $aEsp);
+        
+        echo json_encode(
+                    array(
+                        'result' => 1,
+                        'especialidad'=> $objeto
+                    )
+                );
+    }
 }

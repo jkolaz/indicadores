@@ -57,6 +57,10 @@ function reporteGrafico(){
             esp: $('#txt_esp').val()
         },
         url: base_url+controlador+'getDataAjaxCie10.html',
+        beforeSend: function(){
+            $("#bodyDiagnostico").html('');
+            $("#bodyEspecialidad").html('');
+        },
         success: function(json){
             if (json.respuesta === 1){
                 
@@ -64,8 +68,8 @@ function reporteGrafico(){
                 if(diagnostico.length > 0){
                     $.each(diagnostico,function(i,fila){
                         $("#bodyDiagnostico").append('<tr class="active">');
-                        $("#bodyDiagnostico").append('<td><a href="javascript:;" onclick="diagnostico()">'+fila.ce_cie_10_principal+"</a></td>");
-                        $("#bodyDiagnostico").append("<td>"+fila.cantidad+"</td>");
+                        $("#bodyDiagnostico").append('<td id="diagnostico_'+i+'" class="actions diagnostico"><a href="javascript:;" onclick="diagnostico(\''+fila.ce_cie_10_principal+'\', '+i+')">'+fila.ce_cie_10_principal+"</a></td>");
+                        $("#bodyDiagnostico").append('<td id="diagnostico1_'+i+'" class="actions diagnostico"><a href="javascript:;" onclick="diagnostico(\''+fila.ce_cie_10_principal+'\', '+i+')">'+fila.cantidad+"</a></td>");
                         $("#bodyDiagnostico").append("</tr>");
                     });
                 }
@@ -145,9 +149,40 @@ function decimalAdjust(type, value, exp){
     return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
 }
 
-function diagnostico(){
+function diagnostico(diagnostico, i){
     var anio = $('#txt_anio').val();
     var sede = $('#txt_sede').val();
     var esp = $('#txt_esp').val();
     
+    $.ajax({
+        type: "POST",
+        cache: false,
+        dataType: "json",
+        data:{
+            anio: anio,
+            sede: sede,
+            esp: esp,
+            diagnostico: diagnostico
+        },
+        url: base_url+controlador+'especialidadByDiagnostico.html',
+        beforeSend: function(){
+            $("#bodyEspecialidad").html('');
+            $(".diagnostico").removeClass('alert-danger');
+        },
+        success: function(json){
+            if(json.result === 1){
+                $("#diagnostico_"+i).addClass('alert-danger');
+                $("#diagnostico1_"+i).addClass('alert-danger');
+                var especialidad = json.especialidad;
+                if(especialidad.length > 0){
+                    $.each(especialidad,function(i,fila){
+                        $("#bodyEspecialidad").append('<tr class="active">');
+                        $("#bodyEspecialidad").append('<td>'+fila.ce_especialidad+"</td>");
+                        $("#bodyEspecialidad").append("<td>"+fila.cantidad+"</td>");
+                        $("#bodyEspecialidad").append("</tr>");
+                    });
+                }
+            }
+        }
+    });
 }
