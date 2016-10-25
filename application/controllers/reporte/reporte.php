@@ -226,7 +226,7 @@ class Reporte extends CI_Controller{
         $objCie10 = $this->periodo->getCie10($anio, $sede, $aEsp);
         if($objCie10){
             foreach ($objCie10 as $vCie10){
-                $aCie10[] = array($vCie10->ce_cie_10_principal);
+                $aCie10[] = array($vCie10->cie_detalle);
                 $aCie10Id[] = $vCie10->ce_cie_10_principal;
             }
         }

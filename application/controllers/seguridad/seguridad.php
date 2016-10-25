@@ -26,7 +26,7 @@ class Seguridad extends CI_Controller{
         }
         $objAdm = $this->adm->validateUsuario($user, $password);
         $input = array();
-        $input['user'] = $user;
+        $input['usuario'] = $user;
         $input['password'] = $password;
         $permitir = FALSE;
         if($objAdm){

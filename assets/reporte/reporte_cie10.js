@@ -68,7 +68,7 @@ function reporteGrafico(){
                 if(diagnostico.length > 0){
                     $.each(diagnostico,function(i,fila){
                         $("#bodyDiagnostico").append('<tr class="active">');
-                        $("#bodyDiagnostico").append('<td id="diagnostico_'+i+'" class="actions diagnostico"><a href="javascript:;" onclick="diagnostico(\''+fila.ce_cie_10_principal+'\', '+i+')">'+fila.ce_cie_10_principal+"</a></td>");
+                        $("#bodyDiagnostico").append('<td id="diagnostico_'+i+'" class="actions diagnostico"><a href="javascript:;" onclick="diagnostico(\''+fila.ce_cie_10_principal+'\', '+i+')">'+fila.cie_detalle+"</a></td>");
                         $("#bodyDiagnostico").append('<td id="diagnostico1_'+i+'" class="actions diagnostico"><a href="javascript:;" onclick="diagnostico(\''+fila.ce_cie_10_principal+'\', '+i+')">'+fila.cantidad+"</a></td>");
                         $("#bodyDiagnostico").append("</tr>");
                     });
